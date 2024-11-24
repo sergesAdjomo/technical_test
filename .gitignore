@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.Python
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environnement
+.env
+
+# Data
+*.csv
+*.xlsx
+*.xls
+
+# Système
+.DS_Store
+Thumbs.db
+Draft/*
