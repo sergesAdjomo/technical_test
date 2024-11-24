@@ -1,0 +1,22 @@
+# Chemin: docker-compose.yml
+version: '3.8'
+
+services:
+  opportunity-manager:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./static:/app/static
+      - ./data_sources:/app/data_sources
+      - ./exports:/app/exports
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
