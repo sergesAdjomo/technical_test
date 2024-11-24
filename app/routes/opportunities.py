@@ -1,7 +1,9 @@
 # app/routes/opportunities.py
 from fastapi import APIRouter, HTTPException, Query, Path
+from fastapi.responses import FileResponse  # Nouvel import
 from typing import Optional, List
 import logging
+from pathlib import Path as PathLib  # Renommé pour éviter la confusion avec fastapi.Path
 from ..services.opportunity_service import OpportunityInfoService
 from ..models.opportunity import OpportunityResponse
 
@@ -52,4 +54,28 @@ async def get_opportunity(
         return info
     except Exception as e:
         logger.error(f"Erreur lors de la récupération de l'opportunité: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Nouvelle route pour l'export
+@router.get("/{opportunity_id}/export")
+async def export_opportunity(opportunity_id: str):
+    """Export une opportunité en format Excel."""
+    try:
+        # Créer le dossier exports s'il n'existe pas
+        export_dir = PathLib("exports")
+        export_dir.mkdir(exist_ok=True)
+        
+        output_path = export_dir / f"opportunity_{opportunity_id}.xlsx"
+        
+        if service.to_excel(opportunity_id, str(output_path)):
+            return FileResponse(
+                path=str(output_path),
+                filename=f"opportunity_{opportunity_id}.xlsx",
+                media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+        else:
+            raise HTTPException(status_code=404, detail="Impossible d'exporter l'opportunité")
+            
+    except Exception as e:
+        logger.error(f"Erreur lors de l'export de l'opportunité: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
