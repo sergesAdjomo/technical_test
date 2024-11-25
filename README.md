@@ -22,7 +22,7 @@ Bienvenue dans le **Gestionnaire d'Opportunités**, une application web permetta
 ## **Prérequis**
 
 1. **Méthode traditionnelle :**
-   - Python 3.8 ou version ultérieure (Python 11 recommandé pour certaines fonctionnalités).
+   - Python 11 et plus recommandé pour certaines fonctionnalités.
    - Pip pour gérer les dépendances Python.
 
 2. **Méthode Docker (recommandée) :**
