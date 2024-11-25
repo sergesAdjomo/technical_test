@@ -1,29 +1,34 @@
-:: Chemin: start.bat
+:: Path: start.bat
 @echo off
-echo Arrêt des conteneurs existants...
+echo [+] Stopping existing containers...
 docker-compose down
 
-echo Construction/Mise à jour de l'image...
+echo [+] Building/Updating the image...
 docker-compose build
 
-echo Démarrage de l'application...
+echo [+] Starting the application...
 docker-compose up -d
 
-echo Attente du démarrage de l'application...
-timeout /t 5 /nobreak
+echo [+] Waiting for the application to start...
+timeout /t 5 /nobreak >nul
 
 echo.
 docker-compose ps
 echo.
 
-:: Vérifier si l'application est en cours d'exécution
+:: Check if the application is running
 docker-compose ps | findstr "running" > nul
 if %errorlevel% equ 0 (
-    echo Application démarrée ! Allez sur http://127.0.0.1:8000
+    echo [+] Application started successfully!
+    echo [+] Interface accessible at: http://127.0.0.1:8000
+    echo [+] To view the logs: docker-compose logs -f
 ) else (
-    echo Erreur : l'application n'a pas démarré correctement.
+    echo [-] Error: the application did not start correctly.
+    echo [+] Displaying logs:
+    echo.
     docker-compose logs
 )
 
-echo Pour arrêter l'application, appuyez sur une touche
-pause
+echo.
+echo To stop the application, press any key...
+pause >nul

@@ -144,18 +144,45 @@ class OpportunityInfoService:
     def to_excel(self, opportunity_id: str, output_path: str) -> bool:
         """Exporte les informations d'une opportunité vers un fichier Excel."""
         try:
+            # Récupérer les informations de l'opportunité
             opportunity_info = self.get_info(opportunity_id, include_propositions=True)
             
-            if not opportunity_info.get('informations_principales'):
-                logger.error(f"Opportunité {opportunity_id} introuvable.")
-                return False
+            # Créer un writer Excel avec openpyxl
+            with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
+                # Informations principales
+                main_info = {
+                    'Informations': [{
+                        'Age': opportunity_info['informations_principales'].get('age'),
+                        'Revenu mensuel': opportunity_info['informations_principales'].get('revenu_mensuel'),
+                        'Banque': opportunity_info['informations_principales'].get('banque'),
+                        'Est exploitable': opportunity_info['est_exploitable']
+                    }]
+                }
+                pd.DataFrame(main_info['Informations']).to_excel(writer, sheet_name='Informations', index=False)
+                
+                # Détails complémentaires
+                if opportunity_info.get('details_complementaires'):
+                    details = opportunity_info['details_complementaires']
+                    details_df = pd.DataFrame([{
+                        'Type de bien': details.get('type_bien'),
+                        'Usage du bien': details.get('usage_bien'),
+                        'Type de projet': details.get('type_projet')
+                    }])
+                    details_df.to_excel(writer, sheet_name='Détails', index=False)
+                
+                # Propositions
+                if opportunity_info.get('propositions'):
+                    props_df = pd.DataFrame(opportunity_info['propositions'])
+                    props_df.to_excel(writer, sheet_name='Propositions', index=False)
+                
+                # Raisons si non exploitable
+                if not opportunity_info['est_exploitable'] and opportunity_info.get('raisons_non_exploitable'):
+                    raisons_df = pd.DataFrame({'Raisons': opportunity_info['raisons_non_exploitable']})
+                    raisons_df.to_excel(writer, sheet_name='Raisons', index=False)
             
-            # Créez un DataFrame pour faciliter l'écriture dans Excel
-            data = pd.json_normalize(opportunity_info)
-            data.to_excel(output_path, index=False)
-            
-            logger.info(f"Opportunité {opportunity_id} exportée avec succès vers {output_path}")
+            logger.info(f"Export Excel créé avec succès pour l'opportunité {opportunity_id}")
             return True
+            
         except Exception as e:
-            logger.error(f"Erreur lors de l'exportation vers Excel: {str(e)}")
+            logger.error(f"Erreur lors de l'export Excel: {str(e)}")
             return False

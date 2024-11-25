@@ -10,7 +10,7 @@ services:
       - ./app:/app/app
       - ./static:/app/static
       - ./data_sources:/app/data_sources
-      - ./exports:/app/exports
+      - ./exports:/app/exports:rw  # Ajout du droit d'écriture explicite
     environment:
       - PYTHONPATH=/app
     networks:

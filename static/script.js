@@ -21,10 +21,6 @@ function displayError(message) {
 }
 
 // Fonction pour afficher les résultats de recherche
-// static/script.js
-
-// ... (autres fonctions inchangées)
-
 function displaySearchResults(results) {
     const resultDiv = document.getElementById('resultContent');
     
@@ -168,7 +164,29 @@ async function exportOpportunity() {
     }
     
     try {
-        window.location.href = `/opportunities/${id}/export`;
+        const response = await fetch(`/opportunities/${id}/export`);
+        
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Erreur lors de l\'export');
+        }
+        
+        // Créer un blob à partir de la réponse
+        const blob = await response.blob();
+        
+        // Créer un lien pour télécharger le fichier
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `opportunity_${id}.xlsx`;
+        
+        // Ajouter le lien au document et cliquer dessus
+        document.body.appendChild(a);
+        a.click();
+        
+        // Nettoyer
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
     } catch (error) {
         displayError(`Erreur lors de l'export: ${error.message}`);
     }
