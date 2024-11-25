@@ -1,133 +1,182 @@
-```markdown
-# Gestionnaire d'Opportunités
 
-Une application web permettant de gérer et d'analyser les opportunités commerciales pour les prêts immobiliers.
+---
 
-## Fonctionnalités
+# **Gestionnaire d'Opportunités**
 
-- Recherche d'opportunités par ID
-- Recherche avancée avec filtres (âge, revenu, banque)
-- Affichage détaillé des informations d'une opportunité
-- Visualisation des propositions commerciales associées
-- Export des données au format Excel
+Bienvenue dans le **Gestionnaire d'Opportunités**, une application web permettant de gérer et d’analyser les opportunités commerciales dans le domaine des prêts immobiliers. Elle offre une interface utilisateur moderne, une API robuste et des outils d’exportation pour faciliter la gestion des données.
 
-## Prérequis
+---
 
-- Python 3.8 ou supérieur
-- pip (gestionnaire de paquets Python)
-- Navigateur web moderne
+## **Fonctionnalités Principales**
 
-## Installation
+- **Recherche d’opportunités par identifiant** avec option d'inclure les propositions commerciales associées.
+- **Recherche avancée** avec filtres : âge, revenu, banque, etc.
+- **Évaluation de l'exploitabilité** d’une opportunité.
+- **Export des données** en format Excel.
+- **Vérification de la qualité des données** via des scripts utilitaires.
+- **Endpoint de vérification de la santé** de l’application.
+- **Documentation Swagger** intégrée pour explorer les endpoints API.
 
-1. Cloner le repository :
-```bash
-git clone [URL_DU_REPO]
-cd opportunity_manager
-```
+---
 
-2. Créer un environnement virtuel :
-```bash
-python -m venv env
-source env/bin/activate  # Sur Unix/macOS
-# ou
-env\Scripts\activate     # Sur Windows
-```
+## **Prérequis**
 
-3. Installer les dépendances :
-```bash
-pip install -r requirements.txt
-```
+1. **Méthode traditionnelle :**
+   - Python 3.8 ou version ultérieure (Python 11 recommandé pour certaines fonctionnalités).
+   - Pip pour gérer les dépendances Python.
 
-## Structure des données
+2. **Méthode Docker (recommandée) :**
+   - Docker installé sur votre machine.
 
-L'application attend deux fichiers CSV dans le dossier `data_sources/gold/` :
-- `opportunities_cleaned.csv` : Données des opportunités
-- `propositions_cleaned.csv` : Données des propositions commerciales
+---
 
-## Démarrage
+## **Installation et Configuration**
 
-1. Lancer le serveur :
-```bash
-uvicorn app.main:app --reload
-```
+### Méthode 1 : Installation Traditionnelle
+1. **Cloner le projet :**
+   ```bash
+   git clone https://github.com/sergesAdjomo/technical_test/
+   cd opportunity_manager
+   ```
 
-2. Accéder à l'application :
-Ouvrir un navigateur et aller à `http://localhost:8000`
+2. **Créer un environnement virtuel :**
+   ```bash
+   python -m venv env
+   source env/bin/activate  # Unix/macOS
+   env\Scripts\activate     # Windows
+   ```
 
-## Structure du projet
+3. **Installer les dépendances :**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Lancer l’application :**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+5. **Accéder à l’application :** Ouvrez `http://127.0.0.1:8000` dans votre navigateur.
+
+---
+
+### Méthode 2 : Utilisation avec Docker (Recommandée)
+1. **Construire et lancer l’application :**
+   ```bash
+   docker-compose up --build
+   ```
+
+2. **Accéder à l’application :** Ouvrez `http://127.0.0.1:8000` dans votre navigateur.
+
+3. **Arrêter l’application :**
+   ```bash
+   docker-compose down
+   ```
+---
+
+### Méthode 3 : Utilisation avec le Script de Démarrage (start.bat / start.sh)
+1. **Exécuter le script de démarrage :**
+   - **Windows :** Double-cliquez sur `start.bat`.
+   - **Unix/macOS :** Exécutez `./start.sh` (Assurez-vous de donner les permissions nécessaires) avec `bash start.sh`.
+   - **Accéder à l’application :** Ouvrez `http://127.0.0.1:8000` dans votre navigateur.
+
+---
+
+## **Structure du Projet**
 
 ```
 opportunity_manager/
-│
 ├── app/
-│   ├── models/
-│   │   └── opportunity.py
-│   ├── routes/
-│   │   ├── opportunities.py
-│   │   └── health.py
-│   ├── services/
-│   │   ├── opportunity_service.py
-│   │   └── opportunity_validator.py
-│   ├── templates/
-│   │   └── index.html
-│   └── main.py
-│
-├── data_sources/
-│   └── gold/
-│       ├── opportunities_cleaned.csv
-│       └── propositions_cleaned.csv
-│
-├── static/
-│   ├── style.css
-│   └── script.js
-│
-├── tests/
-│   └── test_opportunity_service.py
-│
-├── exports/           # Dossier pour les exports Excel
-├── requirements.txt
-└── README.md
+│   ├── models/                  # Modèles de données
+│   ├── routes/                  # Endpoints API
+│   ├── services/                # Logique métier
+│   ├── templates/               # Fichiers HTML
+│   └── main.py                  # Point d’entrée
+├── data_sources/                # Données sources
+│   └── gold/                    # Fichiers CSV sources
+├── tests/                       # Tests unitaires et fonctionnels
+├── utils/                       # Scripts utilitaires
+├── static/                      # CSS et JavaScript
+├── exports/                     # Fichiers Excel générés
+├── Dockerfile                   # Définition du conteneur Docker
+├── docker-compose.yml           # Orchestration multi-conteneurs
+├── start.bat / start.sh         # Scripts de démarrage
+└── requirements.txt             # Dépendances Python
 ```
 
-## API Documentation
+---
 
-L'API documentation est disponible à `http://localhost:8000/docs`
+## **Utilisation**
 
-Endpoints principaux :
-- `GET /opportunities/{id}` : Obtenir une opportunité par ID
-- `GET /opportunities/search` : Recherche avancée
-- `GET /opportunities/{id}/export` : Exporter une opportunité en Excel
+### Recherche d'une opportunité :
+1. Entrez l’identifiant de l’opportunité dans l’interface.
+2. Activez l’option **Inclure les propositions** pour voir les propositions associées.
+3. Cliquez sur **Rechercher**.
 
-## Tests
+### Export des données :
+- Cliquez sur **Exporter en Excel** pour télécharger les informations.
+- Les fichiers exportés se trouvent dans :
+  - Le dossier `exports/`.
+  - Ou directement dans le dossier de téléchargement de votre machine.
 
-Pour exécuter les tests :
+---
+
+## **Documentation API**
+
+Accessible via Swagger à l'adresse :
+```
+http://127.0.0.1:8000/docs
+```
+
+### Endpoints Clés
+1. **Recherche par ID :**
+   - `GET /opportunities/{id}`
+   - Paramètre : `include_propositions` (optionnel).
+
+2. **Recherche avancée :**
+   - `GET /opportunities/search`
+   - Filtres : `age_min`, `age_max`, `revenu_min`, `banque`, etc.
+
+3. **Export Excel :**
+   - `GET /opportunities/{id}/export`.
+
+4. **Vérification de l'état de l'API :**
+   - `GET /health/`.
+
+---
+
+## **Tests**
+
+Les tests sont situés dans le dossier `tests/`.
+
+### Exécuter les tests :
 ```bash
-pytest tests/
+pytest
 ```
 
-## Développement
-
-Pour vérifier la qualité des données :
+### Couverture des tests :
 ```bash
-python check_data.py
+pytest --cov=app
 ```
 
-Pour vérifier la configuration :
-```bash
-python check_setup.py
-```
+---
 
-## Technologies utilisées
+## **Scripts Utilitaires**
 
-- FastAPI : Framework web rapide pour construire des APIs
-- Pandas : Manipulation et analyse de données
-- Pydantic : Validation des données
-- Uvicorn : Serveur ASGI pour Python
-- OpenPyXL : Gestion des fichiers Excel
+1. **Validation des données :**
+   - `utils/check_data.py` : Vérifie la présence des données requises.
+   - `utils/data_quality.py` : Évalue la qualité des données CSV.
 
-## Auteurs
+2. **Vérification de la structure :**
+   - `utils/check_setup.py` : Valide la configuration du projet.
 
-- Serges ADJOMO
+---
 
-```
+## **Support**
 
+Pour toute question, contactez :
+📧 **sergesadjomo54@gmail.com**
+
+--- 
+
+Si vous avez des suggestions d'amélioration, faites-les-nous savoir. 🚀
