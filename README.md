@@ -72,6 +72,10 @@ Bienvenue dans le **Gestionnaire d'Opportunités**, une application web permetta
    ```bash
    docker-compose down
    ```
+> **Note:** _Assurez-vous d'avoir démarrer au préalable la Daemon Docker (docker desktop)_.
+
+
+ 
 ---
 
 ### Méthode 3 : Utilisation avec le Script de Démarrage (start.bat / start.sh)
