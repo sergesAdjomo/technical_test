@@ -7,42 +7,29 @@ on:
     branches: [ main, develop ]
   workflow_dispatch:
 
+env:
+  PROJECT_ID: e-datacap
+  SERVICE_ACCOUNT: terraform-sa@e-datacap.iam.gserviceaccount.com
+
 jobs:
   dbt:
     runs-on: ubuntu-latest
-
     steps:
-      # Étape 1 : Checkout du dépôt
       - uses: actions/checkout@v3
 
-      # Étape 2 : Authentification avec Google Cloud
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
+      - uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
       
-      # Étape 3 : Configuration de gcloud
-      - name: Setup Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      - uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_email: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          export_default_credentials: true
+          project_id: ${{ env.PROJECT_ID }}
 
-      # Étape 4 : Configuration de Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
-      # Étape 5 : Debug de l'environnement et des secrets (optionnel, à retirer après test)
-      - name: Debug Environment
-        run: |
-          echo "Checking Python version"
-          python --version
-          echo "Displaying Google credentials"
-          echo "${{ secrets.GCP_SA_KEY }}" | jq '.'
-
-      # Étape 6 : Installation de DBT et des dépendances
       - name: Install DBT
         run: |
           cd dbt
@@ -51,21 +38,18 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Étape 7 : Vérification de DBT
       - name: Run DBT Debug
         run: |
           cd dbt
           source venv/bin/activate
           dbt debug --profiles-dir .
 
-      # Étape 8 : Exécution de DBT
       - name: Run DBT Models
         run: |
           cd dbt
           source venv/bin/activate
           dbt run --profiles-dir .
 
-      # Étape 9 : Validation des tests DBT (optionnel mais recommandé)
       - name: Run DBT Tests
         run: |
           cd dbt

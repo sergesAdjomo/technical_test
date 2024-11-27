@@ -11,6 +11,7 @@ env:
   PROJECT_ID: e-datacap
   REGION: us-central1
   GAR_LOCATION: us-central1-docker.pkg.dev/e-datacap/opportunity-manager
+  SERVICE_ACCOUNT: terraform-sa@e-datacap.iam.gserviceaccount.com
 
 jobs:
   deploy:
@@ -20,23 +21,27 @@ jobs:
       
       - uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
           
       - uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ env.PROJECT_ID }}
       
       - name: Docker Auth
-        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
-
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+      
       - name: Build and Push
         working-directory: ./api/opportunity-manager
         run: |
           docker build -t ${{ env.GAR_LOCATION }}/app:${{ github.sha }} .
           docker push ${{ env.GAR_LOCATION }}/app:${{ github.sha }}
-
+      
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy opportunity-manager \
             --image ${{ env.GAR_LOCATION }}/app:${{ github.sha }} \
             --platform managed \
             --region ${{ env.REGION }} \
+            --project ${{ env.PROJECT_ID }} \
             --allow-unauthenticated
