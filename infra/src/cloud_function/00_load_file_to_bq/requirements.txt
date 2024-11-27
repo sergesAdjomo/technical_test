@@ -1,0 +1,6 @@
+functions-framework==3.*
+google-cloud-bigquery==3.*
+google-cloud-storage==2.*
+google-api-core==2.*
+ndjson==0.3.1
+jq ==1.8.0

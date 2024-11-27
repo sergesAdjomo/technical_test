@@ -1,0 +1,9 @@
+[
+    {"name": "Id", "type": "STRING", "mode": "NULLABLE", "description": "Identifiant de l'opportunité"},
+    {"name": "A_une_proposition_de_sa_banque__c", "type": "BOOLEAN", "mode": "NULLABLE", "description": "Indique si une proposition bancaire a été faite"},
+    {"name": "Age_emprunteur__c", "type": "FLOAT", "mode": "NULLABLE", "description": "Âge de l'emprunteur"},
+    {"name": "Avancement__c", "type": "FLOAT", "mode": "NULLABLE", "description": "État d'avancement"},
+    {"name": "BanquePrincipaleEmp__c", "type": "STRING", "mode": "NULLABLE", "description": "Banque principale de l'emprunteur"},
+    {"name": "CreatedDate", "type": "STRING", "mode": "NULLABLE", "description": "Date de création de l'opportunité"}
+  ]
+  

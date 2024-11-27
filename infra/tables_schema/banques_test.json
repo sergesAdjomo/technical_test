@@ -1,0 +1,6 @@
+[
+    {"name": "Id", "type": "STRING", "mode": "NULLABLE", "description": "Identifiant de la banque"},
+    {"name": "CreatedDate", "type": "STRING", "mode": "NULLABLE", "description": "Date de création de l'entrée"},
+    {"name": "Name", "type": "STRING", "mode": "NULLABLE", "description": "Nom de la banque"}
+  ]
+  
