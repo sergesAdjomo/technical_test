@@ -1,0 +1,53 @@
+name: Infrastructure Pipeline
+
+on:
+  push:
+    paths:
+      - 'infra/**'
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+env:
+  GCP_PROJECT_ID: e-datacap
+  GCP_REGION: us-central1
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infra
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          
+      - uses: google-github-actions/setup-gcloud@v1
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      
+      - name: Terraform Init
+        run: |
+          terraform init \
+            -backend-config="bucket=tf-state-${{ env.GCP_PROJECT_ID }}" \
+            -backend-config="prefix=terraform/state"
+
+      - name: Terraform Format
+        run: terraform fmt -check
+      
+      - name: Terraform Plan
+        run: terraform plan -var-file=env/dev.tfvars
+        
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -var-file=env/dev.tfvars
+
+      - name: Copy Files to GCS
+        if: github.ref == 'refs/heads/main'
+        run: |
+          gcloud storage cp input-files/*.* gs://data-files-001
+          gcloud storage cp --recursive tables_schema gs://gcf-source-001

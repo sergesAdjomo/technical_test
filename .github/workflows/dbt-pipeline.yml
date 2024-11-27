@@ -1,0 +1,39 @@
+name: DBT Pipeline
+
+on:
+  push:
+    paths:
+      - 'dbt/**'
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          
+      - uses: google-github-actions/setup-gcloud@v1
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          
+      - name: Install DBT
+        run: |
+          cd dbt
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          
+      - name: Run DBT
+        run: |
+          cd dbt
+          source venv/bin/activate
+          dbt debug --profiles-dir .
+          dbt run --profiles-dir .

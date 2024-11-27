@@ -1,0 +1,13 @@
+dbt_transform:
+  outputs:
+    dev:
+      dataset: ds_etl
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: us-central1
+      method: oauth
+      priority: interactive
+      project: e-datacap
+      threads: 2
+      type: bigquery
+  target: dev

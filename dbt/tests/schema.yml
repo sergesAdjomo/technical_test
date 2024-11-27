@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: opportunity_cleaned
+    columns:
+      - name: Id
+        tests:
+          - unique
+          - not_null
+      - name: TotRev__c
+        tests:
+          - not_null
+
+  - name: propositions_cleaned
+    columns:
+      - name: Id
+        tests:
+          - unique
+          - not_null
+      - name: Opportunity__c
+        tests:
+          - relationships:
+              to: ref('opportunity_cleaned')
+              field: Id
+
+  - name: banques_cleaned
+    columns:
+      - name: Id
+        tests:
+          - unique
+          - not_null
