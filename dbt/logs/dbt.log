@@ -1,0 +1,667 @@
+[0m04:41:14.232068 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E62B917200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E629072AE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E62B679FA0>]}
+
+
+============================== 04:41:14.239067 | 96d3c7d1-5857-4797-8d4d-3bd16fc34e44 ==============================
+[0m04:41:14.239067 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:41:14.241070 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt docs generate', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m04:41:23.041097 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6295C4FE0>]}
+[0m04:41:23.155098 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6363C16D0>]}
+[0m04:41:23.157101 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m04:41:23.200099 [debug] [MainThread]: checksum: 4af21dafb485259c48497ac86b711ddb1982f3d0f1c0ca4e09356de488b753c0, vars: {}, profile: , target: , version: 1.8.7
+[0m04:41:23.202099 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m04:41:23.203100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E636357E90>]}
+[0m04:41:28.346116 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6366F0380>]}
+[0m04:41:28.399118 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6365725A0>]}
+[0m04:41:28.400117 [info ] [MainThread]: Found 7 models, 4 data tests, 4 sources, 479 macros
+[0m04:41:28.401117 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '96d3c7d1-5857-4797-8d4d-3bd16fc34e44', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E63671D4F0>]}
+[0m04:41:28.405116 [info ] [MainThread]: 
+[0m04:41:28.407121 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m04:41:28.419118 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m04:41:28.420117 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:28.421117 [debug] [ThreadPool]: BigQuery adapter: Got an error when attempting to create a bigquery client: '[Errno 2] No such file or directory: '/tmp/keyfile.json''
+[0m04:41:28.423117 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:41:28.423117 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m04:41:28.425123 [error] [MainThread]: Encountered an error:
+Database Error
+  [Errno 2] No such file or directory: '/tmp/keyfile.json'
+[0m04:41:28.428116 [debug] [MainThread]: Command `dbt docs generate` failed at 04:41:28.428116 after 14.42 seconds
+[0m04:41:28.429116 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E62AC134A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E63644A900>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E62BB2F080>]}
+[0m04:41:28.431117 [debug] [MainThread]: Flushing usage events
+[0m04:42:38.602052 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002054C1DBFE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002054C69EC60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002054CE8FD70>]}
+
+
+============================== 04:42:38.609051 | fcfb2600-598b-411e-9701-e586c603b77a ==============================
+[0m04:42:38.609051 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:42:38.611055 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt docs serve', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m04:42:40.223205 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'fcfb2600-598b-411e-9701-e586c603b77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020557845D60>]}
+[0m04:42:40.290166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'fcfb2600-598b-411e-9701-e586c603b77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002054D0050D0>]}
+[0m04:44:24.414371 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219495FB3B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219495FA4B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002194A09C710>]}
+
+
+============================== 04:44:24.419372 | 42611672-d447-4824-b570-2460fe804709 ==============================
+[0m04:44:24.419372 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:44:24.420374 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'debug': 'False', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt test', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m04:44:26.065806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '42611672-d447-4824-b570-2460fe804709', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021951EE8320>]}
+[0m04:44:26.130770 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '42611672-d447-4824-b570-2460fe804709', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219520834D0>]}
+[0m04:44:26.131809 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m04:44:26.141771 [debug] [MainThread]: checksum: 4af21dafb485259c48497ac86b711ddb1982f3d0f1c0ca4e09356de488b753c0, vars: {}, profile: , target: , version: 1.8.7
+[0m04:44:26.349305 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:44:26.349305 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:44:26.402343 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '42611672-d447-4824-b570-2460fe804709', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021953146600>]}
+[0m04:44:26.556895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '42611672-d447-4824-b570-2460fe804709', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021954E548C0>]}
+[0m04:44:26.557893 [info ] [MainThread]: Found 7 models, 4 data tests, 4 sources, 479 macros
+[0m04:44:26.558808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '42611672-d447-4824-b570-2460fe804709', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021954CE2ED0>]}
+[0m04:44:26.560823 [info ] [MainThread]: 
+[0m04:44:26.561954 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m04:44:26.566944 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m04:44:26.570946 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:44:26.571949 [debug] [ThreadPool]: BigQuery adapter: Got an error when attempting to create a bigquery client: '[Errno 2] No such file or directory: '/tmp/keyfile.json''
+[0m04:44:26.572947 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:44:26.573946 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m04:44:26.573946 [info ] [MainThread]: 
+[0m04:44:26.575946 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.01 seconds (0.01s).
+[0m04:44:26.578945 [error] [MainThread]: Encountered an error:
+Database Error
+  [Errno 2] No such file or directory: '/tmp/keyfile.json'
+[0m04:44:26.581946 [debug] [MainThread]: Command `dbt test` failed at 04:44:26.580947 after 2.36 seconds
+[0m04:44:26.584964 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002194A09D910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021954E1DFD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219549C5BB0>]}
+[0m04:44:26.585950 [debug] [MainThread]: Flushing usage events
+[0m04:46:11.138402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157DE5E5F40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157E1367E60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157E1365A90>]}
+
+
+============================== 04:46:11.144419 | 1750913e-092c-45ca-82b4-428877ba429f ==============================
+[0m04:46:11.144419 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:46:11.145414 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt test', 'send_anonymous_usage_stats': 'True'}
+[0m04:46:12.806491 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1750913e-092c-45ca-82b4-428877ba429f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EA747170>]}
+[0m04:46:12.873491 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1750913e-092c-45ca-82b4-428877ba429f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EA7A18B0>]}
+[0m04:46:12.874492 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m04:46:12.884533 [debug] [MainThread]: checksum: 4af21dafb485259c48497ac86b711ddb1982f3d0f1c0ca4e09356de488b753c0, vars: {}, profile: , target: , version: 1.8.7
+[0m04:46:13.080530 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:46:13.081538 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:46:13.133493 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1750913e-092c-45ca-82b4-428877ba429f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EBDEAF60>]}
+[0m04:46:13.294221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1750913e-092c-45ca-82b4-428877ba429f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EC2911C0>]}
+[0m04:46:13.295217 [info ] [MainThread]: Found 7 models, 4 data tests, 4 sources, 479 macros
+[0m04:46:13.296218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1750913e-092c-45ca-82b4-428877ba429f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EBE84380>]}
+[0m04:46:13.298218 [info ] [MainThread]: 
+[0m04:46:13.300218 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m04:46:13.306219 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m04:46:13.307221 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:46:13.308219 [debug] [ThreadPool]: BigQuery adapter: Got an error when attempting to create a bigquery client: '[Errno 2] No such file or directory: '/tmp/keyfile.json''
+[0m04:46:13.309220 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:46:13.310221 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m04:46:13.311256 [info ] [MainThread]: 
+[0m04:46:13.312219 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.01 seconds (0.01s).
+[0m04:46:13.317220 [error] [MainThread]: Encountered an error:
+Database Error
+  [Errno 2] No such file or directory: '/tmp/keyfile.json'
+[0m04:46:13.320220 [debug] [MainThread]: Command `dbt test` failed at 04:46:13.320220 after 2.33 seconds
+[0m04:46:13.321262 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157E1004EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EC25B7A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157EC0ABE30>]}
+[0m04:46:13.321262 [debug] [MainThread]: Flushing usage events
+[0m04:50:52.329990 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED16770B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED21509B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED2150CE0>]}
+
+
+============================== 04:50:52.334829 | 56edd149-fef7-44cb-8f04-f5f20b382788 ==============================
+[0m04:50:52.334829 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:50:52.335790 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt test', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m04:50:53.901841 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDA9C9FD0>]}
+[0m04:50:53.964845 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDB306A50>]}
+[0m04:50:53.965844 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m04:50:53.975810 [debug] [MainThread]: checksum: 4af21dafb485259c48497ac86b711ddb1982f3d0f1c0ca4e09356de488b753c0, vars: {}, profile: , target: , version: 1.8.7
+[0m04:50:54.094843 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m04:50:54.095805 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED22CCC50>]}
+[0m04:50:55.724905 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDCE70860>]}
+[0m04:50:55.866014 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDD21BE90>]}
+[0m04:50:55.867013 [info ] [MainThread]: Found 7 models, 4 data tests, 4 sources, 479 macros
+[0m04:50:55.868013 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDCA94110>]}
+[0m04:50:55.870016 [info ] [MainThread]: 
+[0m04:50:55.872052 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m04:50:55.876872 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m04:50:55.877884 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:50:57.986047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '56edd149-fef7-44cb-8f04-f5f20b382788', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DEDCB02780>]}
+[0m04:50:57.988046 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m04:50:57.991047 [info ] [MainThread]: 
+[0m04:50:58.009671 [debug] [Thread-1 (]: Began running node test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710
+[0m04:50:58.012726 [debug] [Thread-2 (]: Began running node test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778
+[0m04:50:58.014675 [info ] [Thread-1 (]: 1 of 4 START test not_null_my_first_dbt_model_id ............................... [RUN]
+[0m04:50:58.022668 [debug] [Thread-1 (]: Acquiring new bigquery connection 'test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710'
+[0m04:50:58.017675 [info ] [Thread-2 (]: 2 of 4 START test not_null_my_second_dbt_model_id .............................. [RUN]
+[0m04:50:58.024667 [debug] [Thread-1 (]: Began compiling node test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710
+[0m04:50:58.027666 [debug] [Thread-2 (]: Acquiring new bigquery connection 'test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778'
+[0m04:50:58.038664 [debug] [Thread-2 (]: Began compiling node test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778
+[0m04:50:58.066660 [debug] [Thread-2 (]: Writing injected SQL for node "test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778"
+[0m04:50:58.068708 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710"
+[0m04:50:58.071669 [debug] [Thread-1 (]: Began executing node test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710
+[0m04:50:58.072666 [debug] [Thread-2 (]: Began executing node test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778
+[0m04:50:58.096701 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710"
+[0m04:50:58.099664 [debug] [Thread-2 (]: Writing runtime sql for node "test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778"
+[0m04:50:58.101662 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:50:58.102669 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m04:50:58.103667 [debug] [Thread-1 (]: On test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:50:58.103667 [debug] [Thread-2 (]: On test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from `e-datacap`.`ds_etl`.`my_second_dbt_model`
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:50:59.024279 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:066d9ec6-4a24-442a-a1ec-458314952078&page=queryresults
+[0m04:50:59.026283 [debug] [Thread-1 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:50:59.028283 [debug] [Thread-1 (]: BigQuery adapter: 404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+
+Location: us-central1
+Job ID: 066d9ec6-4a24-442a-a1ec-458314952078
+
+[0m04:50:59.039289 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:ebaaf5d2-9cd6-427f-8a19-e5d5e6661990&page=queryresults
+[0m04:50:59.041287 [debug] [Thread-2 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from `e-datacap`.`ds_etl`.`my_second_dbt_model`
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:50:59.043283 [debug] [Thread-2 (]: BigQuery adapter: 404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+
+Location: us-central1
+Job ID: ebaaf5d2-9cd6-427f-8a19-e5d5e6661990
+
+[0m04:50:59.072273 [debug] [Thread-1 (]: Runtime Error in test not_null_my_first_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 066d9ec6-4a24-442a-a1ec-458314952078
+  
+[0m04:50:59.076279 [debug] [Thread-2 (]: Runtime Error in test not_null_my_second_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: ebaaf5d2-9cd6-427f-8a19-e5d5e6661990
+  
+[0m04:50:59.074273 [error] [Thread-1 (]: 1 of 4 ERROR not_null_my_first_dbt_model_id .................................... [[31mERROR[0m in 1.05s]
+[0m04:50:59.078273 [debug] [Thread-1 (]: Finished running node test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710
+[0m04:50:59.079279 [debug] [Thread-1 (]: Began running node test.dbt_transform.unique_my_first_dbt_model_id.16e066b321
+[0m04:50:59.077277 [error] [Thread-2 (]: 2 of 4 ERROR not_null_my_second_dbt_model_id ................................... [[31mERROR[0m in 1.05s]
+[0m04:50:59.081355 [debug] [Thread-2 (]: Finished running node test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778
+[0m04:50:59.082365 [debug] [Thread-2 (]: Began running node test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493
+[0m04:50:59.080313 [info ] [Thread-1 (]: 3 of 4 START test unique_my_first_dbt_model_id ................................. [RUN]
+[0m04:50:59.084367 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbt_transform.not_null_my_first_dbt_model_id.5fb22c2710, now test.dbt_transform.unique_my_first_dbt_model_id.16e066b321)
+[0m04:50:59.085370 [debug] [Thread-1 (]: Began compiling node test.dbt_transform.unique_my_first_dbt_model_id.16e066b321
+[0m04:50:59.082365 [info ] [Thread-2 (]: 4 of 4 START test unique_my_second_dbt_model_id ................................ [RUN]
+[0m04:50:59.100366 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbt_transform.unique_my_first_dbt_model_id.16e066b321"
+[0m04:50:59.101520 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.dbt_transform.not_null_my_second_dbt_model_id.151b76d778, now test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493)
+[0m04:50:59.102101 [debug] [Thread-2 (]: Began compiling node test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493
+[0m04:50:59.107153 [debug] [Thread-2 (]: Writing injected SQL for node "test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493"
+[0m04:50:59.108111 [debug] [Thread-2 (]: Began executing node test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493
+[0m04:50:59.115113 [debug] [Thread-2 (]: Writing runtime sql for node "test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493"
+[0m04:50:59.116117 [debug] [Thread-1 (]: Began executing node test.dbt_transform.unique_my_first_dbt_model_id.16e066b321
+[0m04:50:59.121116 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbt_transform.unique_my_first_dbt_model_id.16e066b321"
+[0m04:50:59.122111 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m04:50:59.124158 [debug] [Thread-2 (]: On test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with dbt_test__target as (
+
+  select id as unique_field
+  from `e-datacap`.`ds_etl`.`my_second_dbt_model`
+  where id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m04:50:59.130114 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:50:59.131115 [debug] [Thread-1 (]: On test.dbt_transform.unique_my_first_dbt_model_id.16e066b321: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.unique_my_first_dbt_model_id.16e066b321"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with dbt_test__target as (
+
+  select id as unique_field
+  from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+  where id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m04:51:00.069306 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:b5a69903-f4a6-4b49-be65-04b5c36c957e&page=queryresults
+[0m04:51:00.069306 [debug] [Thread-1 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.unique_my_first_dbt_model_id.16e066b321"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with dbt_test__target as (
+
+  select id as unique_field
+  from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+  where id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m04:51:00.070297 [debug] [Thread-1 (]: BigQuery adapter: 404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+
+Location: us-central1
+Job ID: b5a69903-f4a6-4b49-be65-04b5c36c957e
+
+[0m04:51:00.073299 [debug] [Thread-1 (]: Runtime Error in test unique_my_first_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: b5a69903-f4a6-4b49-be65-04b5c36c957e
+  
+[0m04:51:00.074297 [error] [Thread-1 (]: 3 of 4 ERROR unique_my_first_dbt_model_id ...................................... [[31mERROR[0m in 0.99s]
+[0m04:51:00.076259 [debug] [Thread-1 (]: Finished running node test.dbt_transform.unique_my_first_dbt_model_id.16e066b321
+[0m04:51:00.077298 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:9ca181b6-1377-43b9-80a6-f05fbd2bce43&page=queryresults
+[0m04:51:00.078260 [debug] [Thread-2 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with dbt_test__target as (
+
+  select id as unique_field
+  from `e-datacap`.`ds_etl`.`my_second_dbt_model`
+  where id is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m04:51:00.079301 [debug] [Thread-2 (]: BigQuery adapter: 404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+
+Location: us-central1
+Job ID: 9ca181b6-1377-43b9-80a6-f05fbd2bce43
+
+[0m04:51:00.083263 [debug] [Thread-2 (]: Runtime Error in test unique_my_second_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 9ca181b6-1377-43b9-80a6-f05fbd2bce43
+  
+[0m04:51:00.083263 [error] [Thread-2 (]: 4 of 4 ERROR unique_my_second_dbt_model_id ..................................... [[31mERROR[0m in 0.98s]
+[0m04:51:00.085263 [debug] [Thread-2 (]: Finished running node test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493
+[0m04:51:00.088300 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:51:00.088300 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m04:51:00.089297 [debug] [MainThread]: Connection 'test.dbt_transform.unique_my_first_dbt_model_id.16e066b321' was properly closed.
+[0m04:51:00.090300 [debug] [MainThread]: Connection 'test.dbt_transform.unique_my_second_dbt_model_id.57a0f8c493' was properly closed.
+[0m04:51:00.090300 [info ] [MainThread]: 
+[0m04:51:00.093261 [info ] [MainThread]: Finished running 4 data tests in 0 hours 0 minutes and 4.22 seconds (4.22s).
+[0m04:51:00.096260 [debug] [MainThread]: Command end result
+[0m04:51:00.145301 [info ] [MainThread]: 
+[0m04:51:00.147261 [info ] [MainThread]: [31mCompleted with 4 errors and 0 warnings:[0m
+[0m04:51:00.147964 [info ] [MainThread]: 
+[0m04:51:00.148830 [error] [MainThread]:   Runtime Error in test not_null_my_first_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 066d9ec6-4a24-442a-a1ec-458314952078
+  
+[0m04:51:00.150888 [info ] [MainThread]: 
+[0m04:51:00.151746 [error] [MainThread]:   Runtime Error in test not_null_my_second_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: ebaaf5d2-9cd6-427f-8a19-e5d5e6661990
+  
+[0m04:51:00.153759 [info ] [MainThread]: 
+[0m04:51:00.154801 [error] [MainThread]:   Runtime Error in test unique_my_first_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_first_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: b5a69903-f4a6-4b49-be65-04b5c36c957e
+  
+[0m04:51:00.156760 [info ] [MainThread]: 
+[0m04:51:00.160760 [error] [MainThread]:   Runtime Error in test unique_my_second_dbt_model_id (models\example\schema.yml)
+  404 Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.my_second_dbt_model was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 9ca181b6-1377-43b9-80a6-f05fbd2bce43
+  
+[0m04:51:00.162758 [info ] [MainThread]: 
+[0m04:51:00.164759 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=4 SKIP=0 TOTAL=4
+[0m04:51:00.166762 [debug] [MainThread]: Command `dbt test` failed at 04:51:00.166762 after 8.03 seconds
+[0m04:51:00.167760 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED1D95D30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED1E3F0B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DED1E3F1D0>]}
+[0m04:51:00.168759 [debug] [MainThread]: Flushing usage events
+[0m04:54:40.397851 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459DABEED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459D30A030>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459D29F0B0>]}
+
+
+============================== 04:54:40.403439 | 1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9 ==============================
+[0m04:54:40.403439 [info ] [MainThread]: Running with dbt=1.8.7
+[0m04:54:40.404443 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\projet_servier\\etl_servier\\dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'D:\\workspace\\projet_servier\\etl_servier\\dbt\\logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m04:54:42.008292 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A6491FD0>]}
+[0m04:54:42.072294 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459B675250>]}
+[0m04:54:42.073293 [info ] [MainThread]: Registered adapter: bigquery=1.8.2
+[0m04:54:42.083258 [debug] [MainThread]: checksum: 4af21dafb485259c48497ac86b711ddb1982f3d0f1c0ca4e09356de488b753c0, vars: {}, profile: , target: , version: 1.8.7
+[0m04:54:42.282261 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:54:42.282261 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:54:42.334259 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A6C78200>]}
+[0m04:54:42.468788 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A87B8080>]}
+[0m04:54:42.469791 [info ] [MainThread]: Found 7 models, 4 data tests, 4 sources, 479 macros
+[0m04:54:42.470793 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A8588530>]}
+[0m04:54:42.472789 [info ] [MainThread]: 
+[0m04:54:42.474827 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m04:54:42.479513 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap'
+[0m04:54:42.479513 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:54:44.426862 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m04:54:44.428915 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:54:44.867607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459B6D4E90>]}
+[0m04:54:44.868608 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m04:54:44.871606 [info ] [MainThread]: 
+[0m04:54:44.884607 [debug] [Thread-1 (]: Began running node model.dbt_transform.fusion_pubmed
+[0m04:54:44.885608 [debug] [Thread-2 (]: Began running node model.dbt_transform.my_first_dbt_model
+[0m04:54:44.886607 [info ] [Thread-1 (]: 1 of 7 START sql table model ds_etl.fusion_pubmed .............................. [RUN]
+[0m04:54:44.889606 [debug] [Thread-1 (]: Acquiring new bigquery connection 'model.dbt_transform.fusion_pubmed'
+[0m04:54:44.887608 [info ] [Thread-2 (]: 2 of 7 START sql table model ds_etl.my_first_dbt_model ......................... [RUN]
+[0m04:54:44.890608 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.fusion_pubmed
+[0m04:54:44.891606 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.dbt_transform.my_first_dbt_model'
+[0m04:54:44.899606 [debug] [Thread-2 (]: Began compiling node model.dbt_transform.my_first_dbt_model
+[0m04:54:44.918606 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.fusion_pubmed"
+[0m04:54:44.925604 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_transform.my_first_dbt_model"
+[0m04:54:44.929607 [debug] [Thread-1 (]: Began executing node model.dbt_transform.fusion_pubmed
+[0m04:54:44.987605 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.fusion_pubmed"
+[0m04:54:44.988604 [debug] [Thread-2 (]: Began executing node model.dbt_transform.my_first_dbt_model
+[0m04:54:44.993605 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_transform.my_first_dbt_model"
+[0m04:54:44.994606 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:54:44.995607 [debug] [Thread-1 (]: On model.dbt_transform.fusion_pubmed: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.fusion_pubmed"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`fusion_pubmed`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      
+
+-- Fusionner les tables pubmed et pubmedjson
+SELECT id, title, date, journal
+FROM `e-datacap`.`ds_etl`.`pubmed`
+
+UNION ALL
+
+SELECT id, title, date, journal
+FROM `e-datacap`.`ds_etl`.`pubmedjson`
+
+ORDER BY id
+    );
+  
+[0m04:54:44.998608 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m04:54:44.999606 [debug] [Thread-2 (]: On model.dbt_transform.my_first_dbt_model: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.my_first_dbt_model"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`my_first_dbt_model`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      /*
+    Welcome to your first dbt model!
+    Did you know that you can also configure models directly within SQL files?
+    This will override configurations stated in dbt_project.yml
+
+    Try changing "table" to "view" below
+*/
+
+
+
+with source_data as (
+
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from source_data
+
+/*
+    Uncomment the line below to remove records with null `id` values
+*/
+
+where id is not null
+    );
+  
+[0m04:54:45.487238 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:1e073103-d94c-4402-9c69-27d98e1eed15&page=queryresults
+[0m04:54:45.489231 [debug] [Thread-1 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.fusion_pubmed"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`fusion_pubmed`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      
+
+-- Fusionner les tables pubmed et pubmedjson
+SELECT id, title, date, journal
+FROM `e-datacap`.`ds_etl`.`pubmed`
+
+UNION ALL
+
+SELECT id, title, date, journal
+FROM `e-datacap`.`ds_etl`.`pubmedjson`
+
+ORDER BY id
+    );
+  
+[0m04:54:45.492234 [debug] [Thread-1 (]: BigQuery adapter: 404 Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1
+
+Location: us-central1
+Job ID: 1e073103-d94c-4402-9c69-27d98e1eed15
+
+[0m04:54:45.504240 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:337e1293-f355-4213-8115-31679e3ea23f&page=queryresults
+[0m04:54:45.536230 [debug] [Thread-1 (]: Runtime Error in model fusion_pubmed (models\fusion_pubmed.sql)
+  404 Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 1e073103-d94c-4402-9c69-27d98e1eed15
+  
+[0m04:54:45.540231 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A8878CB0>]}
+[0m04:54:45.541229 [error] [Thread-1 (]: 1 of 7 ERROR creating sql table model ds_etl.fusion_pubmed ..................... [[31mERROR[0m in 0.65s]
+[0m04:54:45.545229 [debug] [Thread-1 (]: Finished running node model.dbt_transform.fusion_pubmed
+[0m04:54:45.549232 [debug] [Thread-1 (]: Began running node model.dbt_transform.filtrage_mentions
+[0m04:54:45.550231 [info ] [Thread-1 (]: 3 of 7 SKIP relation ds_etl.filtrage_mentions .................................. [[33mSKIP[0m]
+[0m04:54:45.551229 [debug] [Thread-1 (]: Finished running node model.dbt_transform.filtrage_mentions
+[0m04:54:45.553233 [debug] [Thread-1 (]: Began running node model.dbt_transform.elimination_doublons
+[0m04:54:45.554229 [info ] [Thread-1 (]: 4 of 7 SKIP relation ds_etl.elimination_doublons ............................... [[33mSKIP[0m]
+[0m04:54:45.555227 [debug] [Thread-1 (]: Finished running node model.dbt_transform.elimination_doublons
+[0m04:54:45.556233 [debug] [Thread-1 (]: Began running node model.dbt_transform.journal_max_mentions
+[0m04:54:45.557235 [info ] [Thread-1 (]: 5 of 7 SKIP relation ds_etl.journal_max_mentions ............................... [[33mSKIP[0m]
+[0m04:54:45.558229 [debug] [Thread-1 (]: Finished running node model.dbt_transform.journal_max_mentions
+[0m04:54:45.559228 [debug] [Thread-1 (]: Began running node model.dbt_transform.mags_pubmed_pas_clinical
+[0m04:54:45.560233 [info ] [Thread-1 (]: 6 of 7 SKIP relation ds_etl.mags_pubmed_pas_clinical ........................... [[33mSKIP[0m]
+[0m04:54:45.562231 [debug] [Thread-1 (]: Finished running node model.dbt_transform.mags_pubmed_pas_clinical
+[0m04:54:47.824286 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A6A8EAB0>]}
+[0m04:54:47.827286 [info ] [Thread-2 (]: 2 of 7 OK created sql table model ds_etl.my_first_dbt_model .................... [[32mCREATE TABLE (1.0 rows, 0 processed)[0m in 2.93s]
+[0m04:54:47.834289 [debug] [Thread-2 (]: Finished running node model.dbt_transform.my_first_dbt_model
+[0m04:54:47.836293 [debug] [Thread-1 (]: Began running node model.dbt_transform.my_second_dbt_model
+[0m04:54:47.838286 [info ] [Thread-1 (]: 7 of 7 START sql view model ds_etl.my_second_dbt_model ......................... [RUN]
+[0m04:54:47.839289 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbt_transform.fusion_pubmed, now model.dbt_transform.my_second_dbt_model)
+[0m04:54:47.840291 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.my_second_dbt_model
+[0m04:54:47.855289 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.my_second_dbt_model"
+[0m04:54:47.856291 [debug] [Thread-1 (]: Began executing node model.dbt_transform.my_second_dbt_model
+[0m04:54:47.967291 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.my_second_dbt_model"
+[0m04:54:47.999327 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:54:48.026287 [debug] [Thread-1 (]: On model.dbt_transform.my_second_dbt_model: /* {"app": "dbt", "dbt_version": "1.8.7", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.my_second_dbt_model"} */
+
+
+  create or replace view `e-datacap`.`ds_etl`.`my_second_dbt_model`
+  OPTIONS()
+  as -- Use the `ref` function to select from other models
+
+select *
+from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+where id = 1;
+
+
+[0m04:54:48.782956 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:18773619-4174-49d6-9875-58382daec97b&page=queryresults
+[0m04:54:49.257097 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1cf28438-b9e3-4d57-b921-cbe8d3a8b3c9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A84AF6B0>]}
+[0m04:54:49.261097 [info ] [Thread-1 (]: 7 of 7 OK created sql view model ds_etl.my_second_dbt_model .................... [[32mCREATE VIEW (0 processed)[0m in 1.42s]
+[0m04:54:49.268096 [debug] [Thread-1 (]: Finished running node model.dbt_transform.my_second_dbt_model
+[0m04:54:49.273094 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:54:49.276094 [debug] [MainThread]: Connection 'list_e-datacap' was properly closed.
+[0m04:54:49.278097 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m04:54:49.281101 [debug] [MainThread]: Connection 'model.dbt_transform.my_second_dbt_model' was properly closed.
+[0m04:54:49.284092 [debug] [MainThread]: Connection 'model.dbt_transform.my_first_dbt_model' was properly closed.
+[0m04:54:49.286100 [info ] [MainThread]: 
+[0m04:54:49.290110 [info ] [MainThread]: Finished running 6 table models, 1 view model in 0 hours 0 minutes and 6.81 seconds (6.81s).
+[0m04:54:49.299091 [debug] [MainThread]: Command end result
+[0m04:54:49.406088 [info ] [MainThread]: 
+[0m04:54:49.408091 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m04:54:49.415089 [info ] [MainThread]: 
+[0m04:54:49.418092 [error] [MainThread]:   Runtime Error in model fusion_pubmed (models\fusion_pubmed.sql)
+  404 Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1; reason: notFound, message: Not found: Table e-datacap:ds_etl.pubmedjson was not found in location us-central1
+  
+  Location: us-central1
+  Job ID: 1e073103-d94c-4402-9c69-27d98e1eed15
+  
+[0m04:54:49.421089 [info ] [MainThread]: 
+[0m04:54:49.423090 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=1 SKIP=4 TOTAL=7
+[0m04:54:49.426089 [debug] [MainThread]: Command `dbt run` failed at 04:54:49.426089 after 9.22 seconds
+[0m04:54:49.427096 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459D9393D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000245A5D71250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002459D30A030>]}
+[0m04:54:49.428090 [debug] [MainThread]: Flushing usage events

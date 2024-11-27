@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: ds_etl
+    tables:
+      - name: banques_test
+      - name: opportunity_test
+      - name: propositions_test
