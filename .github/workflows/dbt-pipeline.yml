@@ -17,7 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Configuration de l'authentification Google Cloud
       - uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
@@ -31,37 +30,55 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Installation et initialisation de dbt
-      - name: Initialize DBT Environment
+      # Installation complète de dbt avec initialisation du projet
+      - name: Setup DBT Environment
         run: |
           cd dbt
+          # Créer et activer l'environnement virtuel
           python -m venv venv
           source venv/bin/activate
-          pip install --upgrade pip
-          pip install dbt-core==1.8.9 dbt-bigquery==1.8.3  # Versions exactes de votre environnement local
           
-          # Création du répertoire de macros s'il n'existe pas
-          mkdir -p macros
+          # Installer les dépendances dans un ordre spécifique
+          pip install --upgrade pip wheel setuptools
+          pip install dbt-core==1.8.9
+          pip install dbt-bigquery==1.8.3
           
-          # Installation des dépendances dbt
+          # Créer une structure de projet temporaire pour obtenir les macros nécessaires
+          cd ..
+          dbt init temp_project --adapter bigquery
+          
+          # Copier les macros essentielles
+          cp -r temp_project/dbt_packages/* dbt/
+          rm -rf temp_project
+          
+          cd dbt
+          # Installation des dépendances du projet
           dbt deps --profiles-dir .
 
-      # Vérification de la configuration
+      # Vérifier l'installation
+      - name: Verify DBT Installation
+        run: |
+          cd dbt
+          source venv/bin/activate
+          python -c "import dbt_bigquery; print(f'DBT BigQuery version: {dbt_bigquery.__version__}')"
+          ls -la
+          ls -la macros/
+
       - name: Run DBT Debug
         run: |
           cd dbt
           source venv/bin/activate
           dbt debug --profiles-dir .
 
-      # Exécution des modèles
       - name: Run DBT Models
+        if: success()
         run: |
           cd dbt
           source venv/bin/activate
           dbt run --profiles-dir .
 
-      # Tests
       - name: Run DBT Tests
+        if: success()
         run: |
           cd dbt
           source venv/bin/activate
