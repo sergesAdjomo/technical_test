@@ -3,6 +3,16 @@ version: 2
 sources:
   - name: ds_etl
     tables:
-      - name: banques_test
       - name: opportunity_test
       - name: propositions_test
+      - name: banques_test
+
+models:
+  - name: opportunity_cleaned
+    description: "Table des opportunités nettoyées"
+    
+  - name: propositions_cleaned
+    description: "Table des propositions nettoyées"
+    
+  - name: banques_cleaned
+    description: "Table des banques standardisées"

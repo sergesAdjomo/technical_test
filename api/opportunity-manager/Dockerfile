@@ -24,7 +24,6 @@ RUN mkdir -p data_sources/gold exports \
 # Copier le code source de l'application
 COPY app ./app
 COPY static ./static
-COPY data_sources ./data_sources
 COPY exports ./exports
 
 # Dfinir la variable d'environnement PORT

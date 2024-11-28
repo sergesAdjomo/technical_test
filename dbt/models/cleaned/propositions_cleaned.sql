@@ -3,7 +3,7 @@
 WITH cleaned_propositions AS (
     SELECT *,
         (CAST(TXHA__c AS FLOAT64) / 100) * DureePret_Mois__c as total_cost
-    FROM {{ source('ds_etl', 'propositions_test') }}
+    FROM `e-datacap`.ds_etl.propositions_test
     WHERE Etape_Source__c NOT LIKE '%Non éligible%'
     AND Opportunity__c IN (
         SELECT Id FROM {{ ref('opportunity_cleaned') }}

@@ -9,7 +9,7 @@ from ..models.opportunity import OpportunityResponse
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
-service = OpportunityInfoService("data_sources/gold")
+service = OpportunityInfoService()
 
 # Route de recherche avancée - DOIT ÊTRE AVANT la route par ID
 @router.get("/search", response_model=List[OpportunityResponse])
@@ -24,11 +24,11 @@ async def search_opportunities(
     try:
         logger.info(f"Recherche avancée - Critères: age_min={age_min}, age_max={age_max}, revenu_min={revenu_min}, banque={banque}")
         results = service.search_opportunities(
-            age_min=age_min,
-            age_max=age_max,
-            revenu_min=revenu_min,
-            banque=banque,
-            limit=limit
+            age_min,
+            age_max,
+            revenu_min,
+            banque,
+            limit
         )
         if not results:
             logger.info("Aucun résultat trouvé pour la recherche avancée")
@@ -49,7 +49,9 @@ async def get_opportunity(
     try:
         logger.info(f"Récupération de l'opportunité: {opportunity_id}")
         info = service.get_info(opportunity_id, include_propositions)
-        if not info['est_exploitable']:
+        print(info)
+        print(info['est_exploitable'])
+        if info['est_exploitable'] == "False":
             logger.warning(f"Opportunité non exploitable: {opportunity_id}")
         return info
     except Exception as e:

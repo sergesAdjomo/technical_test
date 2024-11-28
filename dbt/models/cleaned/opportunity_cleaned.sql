@@ -10,7 +10,7 @@ WITH cleaned_opportunities AS (
             ELSE FALSE 
         END as is_exploitable,
         TIMESTAMP(CreatedDate) as created_date_cleaned
-    FROM {{ source('ds_etl', 'opportunity_test') }}
+    FROM `e-datacap`.ds_etl.opportunity_test
     WHERE TotRev__c > 0 
     AND Age_emprunteur__c >= 18 
     AND Age_emprunteur__c <= 80

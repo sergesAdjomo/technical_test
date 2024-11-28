@@ -1,4 +1,5 @@
 # app/main.py
+import os
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -6,6 +7,7 @@ from pathlib import Path
 import logging
 from .services.opportunity_service import OpportunityInfoService
 from .routes import opportunities, health
+from google.cloud import bigquery
  
 # Configurer le logging
 logging.basicConfig(level=logging.INFO)
@@ -25,11 +27,10 @@ DATA_PATH = BASE_PATH / "data_sources" / "gold"
 logger.info(f"Base path: {BASE_PATH}")
 logger.info(f"Data path: {DATA_PATH}")
 
+# initialiser le client bigquery
 # Vérifier que le dossier de données existe
-if not DATA_PATH.exists():
-    logger.error(f"Data directory not found: {DATA_PATH}")
-    DATA_PATH.mkdir(parents=True, exist_ok=True)
-    logger.info("Created data directory")
+
+
 
 # Configurer les fichiers statiques et les templates
 STATIC_PATH = BASE_PATH / "static"
@@ -46,7 +47,7 @@ app.mount("/static", StaticFiles(directory=str(STATIC_PATH)), name="static")
 templates = Jinja2Templates(directory=str(TEMPLATES_PATH))
 
 # Initialiser le service
-service = OpportunityInfoService(str(DATA_PATH))
+service = OpportunityInfoService()
 
 # Inclure les routes
 app.include_router(opportunities.router, prefix="/opportunities", tags=["Opportunities"])
@@ -73,4 +74,6 @@ async def test():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)

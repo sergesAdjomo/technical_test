@@ -1,0 +1,42 @@
+[
+  {
+      "name": "Id",
+      "type": "STRING",
+      "mode": "REQUIRED"
+  },
+  {
+      "name": "CreatedDate",
+      "type": "TIMESTAMP",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Opportunity__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Partenaire__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TXHA__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "DureePret_Mois__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TauxAss__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Etape_Source__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  }
+]

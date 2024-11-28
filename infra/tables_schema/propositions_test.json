@@ -1,10 +1,12 @@
-[
-    {"name": "Id", "type": "STRING", "mode": "NULLABLE", "description": "Identifiant de la proposition"},
-    {"name": "CreatedDate", "type": "STRING", "mode": "NULLABLE", "description": "Date de création de la proposition"},
-    {"name": "Opportunity__c", "type": "STRING", "mode": "NULLABLE", "description": "Référence à l'opportunité liée"},
-    {"name": "Partenaire__c", "type": "STRING", "mode": "NULLABLE", "description": "Identifiant du partenaire"},
-    {"name": "TXHA__c", "type": "FLOAT", "mode": "NULLABLE", "description": "Taux hypothécaire annuel"},
-    {"name": "DureePret_Mois__c", "type": "FLOAT", "mode": "NULLABLE", "description": "Durée du prêt en mois"},
-    {"name": "TauxAss__c", "type": "FLOAT", "mode": "NULLABLE", "description": "Taux d'assurance"}
+{
+  "fields": [
+    {"name": "Id", "type": "STRING"},
+    {"name": "CreatedDate", "type": "TIMESTAMP"},
+    {"name": "Opportunity__c", "type": "STRING"},
+    {"name": "Partenaire__c", "type": "STRING"},
+    {"name": "TXHA__c", "type": "FLOAT"},
+    {"name": "DureePret_Mois__c", "type": "FLOAT"},
+    {"name": "TauxAss__c", "type": "FLOAT"},
+    {"name": "Etape_Source__c", "type": "STRING"}
   ]
-  
+}

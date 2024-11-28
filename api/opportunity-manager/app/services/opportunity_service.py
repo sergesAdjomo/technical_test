@@ -1,43 +1,43 @@
 # app/services/opportunity_service.py
+import os
 import pandas as pd
 from typing import Dict, Optional, List
+from google.cloud import bigquery
 import logging
 from pathlib import Path
 from .opportunity_validator import OpportunityValidator
+import db_dtypes
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class OpportunityInfoService:
-    def __init__(self, data_path: str):
-        """Initialise le service avec le chemin vers les données."""
-        self.data_path = data_path
-        logger.info(f"Initialisation du service avec data_path: {data_path}")
-        
-        opps_path = Path(data_path) / "opportunities_cleaned.csv"
-        props_path = Path(data_path) / "propositions_cleaned.csv"
-        
-        if not opps_path.exists() or not props_path.exists():
-            raise FileNotFoundError(f"Fichiers de données manquants dans {data_path}")
-            
-        try:
-            # Charger les données sans définir d'index
-            self.opportunities_df = pd.read_csv(opps_path)
-            self.propositions_df = pd.read_csv(props_path)
-            logger.info(f"Données chargées - Opportunités: {len(self.opportunities_df)}, Propositions: {len(self.propositions_df)}")
-        except Exception as e:
-            logger.error(f"Erreur lors du chargement des données: {str(e)}")
-            raise
-            
-        self.validator = OpportunityValidator()
-
+    # Ajouter le client bigquery en paramètre de la fonction __init__
+    # Ajouter le client bigquery en paramètre de la fonction get_info 
     def get_info(self, opportunity_id: str, include_propositions: bool = False) -> Dict:
         """Récupère les informations d'une opportunité."""
         logger.info(f"Recherche de l'opportunité {opportunity_id}")
+        project_id = os.environ.get('PROJECT_ID', 'PROJECT_ID env var is not set.')
+        dataset = os.environ.get('DATASET', 'DATASET env var is not set.')
+
+        bigquery_client = bigquery.Client(project=project_id)
         
         # Filtrer les opportunités sans utiliser d'index
-        opportunity = self.opportunities_df[self.opportunities_df['Id'] == opportunity_id]
-        
+        # select * from opportunities where Id = opportunity_id Executer la requete suivante avec le client bigquery
+       
+    
+        sql = f"""
+            SELECT *
+            FROM `{project_id}.{dataset}.opportunity_cleaned`
+            WHERE Id = '{opportunity_id}';
+        """
+        # Start the query, passing in the extra
+        query_job = bigquery_client.query_and_wait(
+            sql,    # Location must match that of the dataset(s) referenced in the query# and of the destination table.    location="US",
+        )  # API request - starts the query
+
+        opportunity = query_job.to_dataframe()
+
         if len(opportunity) == 0:
             return {
                 'informations_principales': None,
@@ -46,9 +46,10 @@ class OpportunityInfoService:
                 'details_complementaires': None,
                 'propositions': None
             }
-        
+        print(f"number opportunity treive = {len(opportunity)}")
         opportunity_data = opportunity.iloc[0].to_dict()
-        est_exploitable, problemes = self.validator.validate_opportunity(opportunity_data)
+        validator = OpportunityValidator()
+        est_exploitable, problemes = validator.validate_opportunity(opportunity_data)
         
         # Construire la réponse
         response = {
@@ -78,50 +79,69 @@ class OpportunityInfoService:
             'propositions': None
         }
         
+        print(f"response = {response}")
         # Ajouter les propositions si demandées et si l'opportunité est exploitable
         if include_propositions:
-            propositions = self.propositions_df[
-                self.propositions_df['Opportunity__c'] == opportunity_id
-            ].to_dict('records')
+            sql = f"""
+                SELECT *
+                FROM `{project_id}.{dataset}.propositions_cleaned`
+                WHERE Id = '{opportunity_id}';
+                """
+            # Start the query, passing in the extra
+            query_job = bigquery_client.query_and_wait(
+                sql,    # Location must match that of the dataset(s) referenced in the query# and of the destination table.    location="US",
+            )  # API request - starts the query
             
-            if propositions:
+            propositions = query_job.to_dataframe()
+            print(f"propositions = {propositions}")
+            print(f"taille de proposition {len(propositions)}")
+            if len(propositions) > 0:
                 response['propositions'] = [{
                     'taux': prop.get('TXHA__c'),
                     'duree_mois': prop.get('DureePret_Mois__c'),
                     'etape': prop.get('Etape_Source__c')
                 } for prop in propositions]
                 
-            logger.info(f"Ajout de {len(propositions) if propositions else 0} propositions")
+      #       logger.info(f"Ajout de {len(propositions) if propositions else 0} propositions")
         
         return response
 
     def search_opportunities(
         self,
-        age_min: Optional[int] = None,
-        age_max: Optional[int] = None,
-        revenu_min: Optional[float] = None,
-        banque: Optional[str] = None,
-        limit: int = 10
+        age_min: int,
+        age_max: int,
+        revenu_min: float,
+        banque: str,
+        limit: int 
     ) -> List[Dict]:
         """Recherche des opportunités selon les critères."""
-        try:
-            filtered_df = self.opportunities_df.copy()
+        logger.info(f"Recherche avancée - Critères: age_min={age_min}, age_max={age_max}, revenu_min={revenu_min}, banque={banque}")
+        try: 
+            project_id = os.environ.get('PROJECT_ID', 'PROJECT_ID env var is not set.')
+            dataset = os.environ.get('DATASET', 'DATASET env var is not set.')
+            bigquery_client = bigquery.Client(project=project_id)
+
+            sql = f"""
+                SELECT *
+                FROM `{project_id}.{dataset}.opportunity_cleaned`
+                WHERE Age_emprunteur__c >= {age_min} and Age_emprunteur__c <= {age_max} and CAST(TotRev__c AS INT64) >= CAST( {revenu_min} AS INT64) and BanquePrincipaleEmp__c = '{banque}';
+                """
+            # Start the query, passing in the extra
+            query_job = bigquery_client.query_and_wait(
+                sql,    # Location must match that of the dataset(s) referenced in the query# and of the destination table.    location="US",
+            )  # API request - starts the query
             
-            if age_min is not None:
-                filtered_df = filtered_df[filtered_df['Age_emprunteur__c'] >= age_min]
-            if age_max is not None:
-                filtered_df = filtered_df[filtered_df['Age_emprunteur__c'] <= age_max]
-            if revenu_min is not None:
-                filtered_df = filtered_df[filtered_df['TotRev__c'] >= revenu_min]
-            if banque:
-                filtered_df = filtered_df[filtered_df['BanquePrincipaleEmp__c'] == banque]
+            filtered_df = query_job.to_dataframe()
+            print(f"filtered_df = {filtered_df}")
+            print(f"taille de filtered_df {len(filtered_df)}")
             
             filtered_df = filtered_df.head(limit)
             
             results = []
+
             for _, row in filtered_df.iterrows():
                 opportunity_data = row.to_dict()
-                est_exploitable, problemes = self.validator.validate_opportunity(opportunity_data)
+                est_exploitable, problemes = OpportunityValidator().validate_opportunity(opportunity_data)
                 
                 result = {
                     'id': opportunity_data['Id'],

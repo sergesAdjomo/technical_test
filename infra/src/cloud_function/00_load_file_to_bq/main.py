@@ -1,75 +1,133 @@
 import logging
 import os
-from typing import Dict
-from typing import List
+from typing import Dict, List
 import json
 import functions_framework
-import jq
-import ndjson
 from google.cloud import bigquery
 from google.cloud import storage
-
 
 @functions_framework.cloud_event
 def load_data(cloud_event):
     try:
         data: Dict = cloud_event.data
-        # Set up BigQuery client
+        logging.info(f"Event received: {json.dumps(data)}")
+        
         client = bigquery.Client()
         storage_client = storage.Client()
-        dataset_ref = f"{os.environ.get('PROJECT_ID')}.{os.environ.get('DATASET_ID')}"
+        
+        # Extraire les informations du fichier
         bucket_name = data['bucket']
-        source_file = str(data["name"])
-        file_extension = source_file.split('.')[1]
-        table_ref = f"{os.environ.get('PROJECT_ID')}.{os.environ.get('DATASET_ID')}.{source_file.split('.')[0]}"
+        source_file = str(data["name"]).lower()
+        file_name_without_ext = os.path.splitext(source_file)[0]
+        file_extension = os.path.splitext(source_file)[1].lstrip('.')
+        
+        logging.info(f"File details - Bucket: {bucket_name}, File: {source_file}")
+        logging.info(f"File parsed - Name: {file_name_without_ext}, Extension: {file_extension}")
+        
+        # Construire les références
+        project_id = os.environ.get('PROJECT_ID')
+        dataset_id = os.environ.get('DATASET_ID')
+        dataset_ref = f"{project_id}.{dataset_id}"
+        table_ref = f"{dataset_ref}.{file_name_without_ext}"
+        
+        logging.info(f"Project Configuration - Project: {project_id}, Dataset: {dataset_id}")
+        logging.info(f"Table Reference: {table_ref}")
+        
+        schema_bucket = os.environ.get('BUCKET_NAME')
+        schema_file = f"{file_name_without_ext}.json"
+        logging.info(f"Looking for schema in bucket {schema_bucket}: {schema_file}")
 
-        # load a schema file.
-        schema = [bigquery.SchemaField(name=x.get('name'), field_type=x.get('type'), mode=x.get('mode'),
-                                       description=x.get('description'))
-                  for x in read_json_file(storage_client,
-                                          os.environ.get('BUCKET_NAME'),
-                                          f"{source_file.split('.')[0]}.json")
-                  ]
+        try:
+            schema = [
+                bigquery.SchemaField(
+                    name=x.get('name'),
+                    field_type=x.get('type'),
+                    mode=x.get('mode', 'NULLABLE'),
+                    description=x.get('description', '')
+                )
+                for x in read_json_file(
+                    storage_client,
+                    schema_bucket,
+                    schema_file
+                )
+            ]
+            logging.info(f"Schema loaded successfully with {len(schema)} fields")
+            logging.info(f"Schema details: {[{f.name: f.field_type} for f in schema]}")
+        except Exception as schema_error:
+            logging.error(f"Error loading schema: {schema_error}")
+            raise schema_error
 
-        # Ingest file based on the file extension
-        match file_extension:
-            case "csv":
-                print(f"{file_extension} is the extension of the file.")
-                job_config = bigquery.LoadJobConfig(
-                    source_format=bigquery.SourceFormat.CSV,
-                    skip_leading_rows=1,
-                    autodetect=True, schema=schema)
-                load_job = client.load_table_from_uri(f"gs://{bucket_name}/{source_file}", table_ref,
-                                                      job_config=job_config)  # Make an API request.
-            case "json":
-                print(f"{file_extension} is the extension of the file.")
-                job_config = bigquery.LoadJobConfig(
-                    source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-                    schema=schema,
-                    autodetect=False)
-                load_job = client.load_table_from_uri(f"gs://{bucket_name}/{source_file}", table_ref,
-                                                      job_config=job_config)  # Make an API request.
-            case _:
-                print("Not yet implemented")
+        # Configuration du job selon l'extension
+        job_config = bigquery.LoadJobConfig(schema=schema, autodetect=False)
+        
+        if file_extension.lower() == "csv":
+            logging.info("Configuring CSV load job")
+            job_config.source_format = bigquery.SourceFormat.CSV
+            job_config.skip_leading_rows = 1
+        elif file_extension.lower() == "json":
+            logging.info("Configuring JSON load job")
+            job_config.source_format = bigquery.SourceFormat.NEWLINE_DELIMITED_JSON
+        else:
+            raise ValueError(f"Unsupported file extension: {file_extension}")
 
-        load_job.result()  # Waits for the job to complete.
-        destination_table = client.get_table(table_ref)  # Make an API request.
-        print(f"Loaded {source_file} into {dataset_ref}.{table_ref}")
-        print("Loaded {} rows.".format(destination_table.num_rows))
+        # Charger les données
+        uri = f"gs://{bucket_name}/{source_file}"
+        logging.info(f"Starting load job from {uri} to {table_ref}")
+        load_job = client.load_table_from_uri(
+            uri,
+            table_ref,
+            job_config=job_config
+        )
+        
+        logging.info("Waiting for load job to complete...")
+        load_job.result()  # Attendre la fin du job
+        
+        # Vérifier le résultat
+        destination_table = client.get_table(table_ref)
+        logging.info(f"Loaded {destination_table.num_rows} rows into {table_ref}")
+        
+        return f"Successfully loaded {source_file}"
 
     except Exception as ex:
-        logging.error(f"Error loading {source_file}: {ex}")
-        raise ex
+        logging.error(f"Error processing {source_file}: {str(ex)}")
+        raise
 
-
-def read_json_file(storage_client, bucket_name: str, filename: str):
-    bucket = storage_client.get_bucket(bucket_name)
-
-    blob = bucket.get_blob(filename)
-
-    json_data_string = blob.download_as_string()
-
-    # Convert the json lines String to a List of Dict
-    json_data_as_dicts: List[Dict] = json.loads(json_data_string)
-
-    return json_data_as_dicts
+def read_json_file(storage_client, bucket_name: str, filename: str) -> List[Dict]:
+    try:
+        bucket = storage_client.get_bucket(bucket_name)
+        blob = bucket.get_blob(filename)
+        
+        if not blob:
+            raise FileNotFoundError(f"Schema file not found: {filename}")
+        
+        json_data_string = blob.download_as_string().decode('utf-8')
+        logging.info(f"Raw schema content for {filename}: {json_data_string[:200]}...")  # Log les 200 premiers caractères
+        
+        try:
+            schema_data = json.loads(json_data_string)
+            logging.info(f"Schema type: {type(schema_data)}")
+            
+            if isinstance(schema_data, str):
+                # Si le schéma est une chaîne, essayons de le parser à nouveau
+                schema_data = json.loads(schema_data)
+            
+            if not isinstance(schema_data, list):
+                raise ValueError(f"Schema must be a list, got {type(schema_data)}")
+            
+            # Vérification de la structure de chaque élément
+            for item in schema_data:
+                if not isinstance(item, dict):
+                    raise ValueError(f"Schema item must be a dictionary, got {type(item)}")
+                if 'name' not in item or 'type' not in item:
+                    raise ValueError(f"Missing required fields in schema item: {item}")
+            
+            return schema_data
+            
+        except json.JSONDecodeError as e:
+            logging.error(f"JSON decode error in {filename}: {str(e)}")
+            logging.error(f"Problematic content: {json_data_string}")
+            raise
+            
+    except Exception as e:
+        logging.error(f"Error reading schema file {filename}: {str(e)}")
+        raise

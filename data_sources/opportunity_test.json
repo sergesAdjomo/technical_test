@@ -1,0 +1,247 @@
+[
+  {
+      "name": "Id",
+      "type": "STRING",
+      "mode": "REQUIRED"
+  },
+  {
+      "name": "A_une_proposition_de_sa_banque__c",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Age_emprunteur__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Appel_Automatique__c",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Avancement__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "BanquePrincipaleEmp__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Connaissances_en_immobilier__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "CreatedDate",
+      "type": "TIMESTAMP",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Deja_souscrit_credit_immo__c",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "DurSouhaitePret__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "EntiteMTXPiste__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Esperance_de_gain_franchise__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Esperance_de_gain_franchise_initiale__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Esperance_de_gain_plateforme__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Esperance_de_gain_plateforme_initiale__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "HonorairMTX__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Id_ApporteurWeb__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MensuSouhaitePret__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontAppPerso__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontEstimTravaux__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontPretCEL__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontPretPel__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontPretPricip__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontPretRel__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "MontPretTxZero__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Nombre_de_banques_consultees__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Origine__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Points_profil__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Points_profil_franchise__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Points_profil_initiaux__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Points_profil_initiaux_franchise__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "PropFinal__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "RecordTypeId",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Residuel__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "SituActu__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "StageName",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Taux_d_apport__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TechMail_CategorieProfessionnelleCoEmpru__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TechMail_CategorieProfessionnelleEmpru__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TechMail_ContratDeTravailCoEmprunteur__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TechMail_ContratDeTravailEmprunteur__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TotalProposition__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TotCharges__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TotRev__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "Tx_Completude_Pieces__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TxEndetApres__c",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TypBien__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "TypProj__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  },
+  {
+      "name": "UsagBien__c",
+      "type": "STRING",
+      "mode": "NULLABLE"
+  }
+]
