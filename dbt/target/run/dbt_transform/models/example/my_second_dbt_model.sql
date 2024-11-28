@@ -1,10 +1,18 @@
 
+  
+    
 
-  create or replace view `e-datacap`.`ds_etl`.`my_second_dbt_model`
-  OPTIONS()
-  as -- Use the `ref` function to select from other models
+    create or replace table `e-datacap`.`ds_etl`.`my_second_dbt_model`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      -- Use the `ref` function to select from other models
 
 select *
 from `e-datacap`.`ds_etl`.`my_first_dbt_model`
-where id = 1;
-
+where id = 1
+    );
+  

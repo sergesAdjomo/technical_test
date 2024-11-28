@@ -1,18 +1,13 @@
 dbt_transform:
   outputs:
     dev:
-      type: bigquery
-      method: oauth
-      project: e-datacap
       dataset: ds_etl
-      threads: 1
-      timeout_seconds: 300
-      location: us-central1
-      priority: interactive
-      retries: 1
       job_execution_timeout_seconds: 300
       job_retries: 1
-      # Add these explicit oauth settings
-      token: "{{ env_var('GOOGLE_OAUTH_TOKEN', '') }}"
-      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS', '') }}"
+      location: us-central1
+      method: oauth
+      priority: interactive
+      project: e-datacap
+      threads: 1
+      type: bigquery
   target: dev

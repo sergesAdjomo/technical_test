@@ -2965,3 +2965,329 @@ FROM cleaned_propositions
 [0m23:03:39.859985 [debug] [MainThread]: Command `dbt run` succeeded at 23:03:39.859985 after 26.61 seconds
 [0m23:03:39.860987 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000198F45CCA40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000198F42A3350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000198F45740E0>]}
 [0m23:03:39.861988 [debug] [MainThread]: Flushing usage events
+[0m14:29:17.467155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002258681E1B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000225848D1340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022584682810>]}
+
+
+============================== 14:29:17.475559 | be25e607-7eba-4f72-b10a-dff39fa6343e ==============================
+[0m14:29:17.475559 [info ] [MainThread]: Running with dbt=1.8.9
+[0m14:29:17.476556 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt\\logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init dbt_transform', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m14:29:17.511315 [info ] [MainThread]: Setting up your profile.
+[0m14:30:30.989230 [info ] [MainThread]: Profile dbt_transform written to D:\workspace\test_meilleurtaux\technical_test\dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m14:30:30.993428 [debug] [MainThread]: Command `dbt init` succeeded at 14:30:30.992470 after 73.72 seconds
+[0m14:30:30.994590 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002258681E1B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000225870A8830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000225904A6FC0>]}
+[0m14:30:30.995631 [debug] [MainThread]: Flushing usage events
+[0m14:30:36.121598 [debug] [MainThread]: Error sending anonymous usage statistics. Disabling tracking for this execution. If you wish to permanently disable tracking, see: https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats.
+[0m14:30:56.647645 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000222774D1B80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002227A6AADB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002227A6AB290>]}
+
+
+============================== 14:30:56.652622 | f096b42f-b0fa-4e42-a6ab-ec9b1b1505b6 ==============================
+[0m14:30:56.652622 [info ] [MainThread]: Running with dbt=1.8.9
+[0m14:30:56.653621 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt\\logs', 'debug': 'False', 'profiles_dir': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m14:30:56.686707 [info ] [MainThread]: dbt version: 1.8.9
+[0m14:30:56.687465 [info ] [MainThread]: python version: 3.12.6
+[0m14:30:56.688154 [info ] [MainThread]: python path: D:\workspace\test_meilleurtaux\technical_test\env\Scripts\python.exe
+[0m14:30:56.689165 [info ] [MainThread]: os info: Windows-10-10.0.19045-SP0
+[0m14:30:58.911368 [info ] [MainThread]: Using profiles dir at D:\workspace\test_meilleurtaux\technical_test\dbt
+[0m14:30:58.914371 [info ] [MainThread]: Using profiles.yml file at D:\workspace\test_meilleurtaux\technical_test\dbt\profiles.yml
+[0m14:30:58.915368 [info ] [MainThread]: Using dbt_project.yml file at D:\workspace\test_meilleurtaux\technical_test\dbt\dbt_project.yml
+[0m14:30:58.916887 [info ] [MainThread]: adapter type: bigquery
+[0m14:30:58.918947 [info ] [MainThread]: adapter version: 1.8.3
+[0m14:30:59.206907 [info ] [MainThread]: Configuration:
+[0m14:30:59.207905 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m14:30:59.209903 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:30:59.210904 [info ] [MainThread]: Required dependencies:
+[0m14:30:59.212906 [debug] [MainThread]: Executing "git --help"
+[0m14:30:59.288450 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m14:30:59.289450 [debug] [MainThread]: STDERR: "b''"
+[0m14:30:59.290452 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m14:30:59.291450 [info ] [MainThread]: Connection:
+[0m14:30:59.292466 [info ] [MainThread]:   method: oauth
+[0m14:30:59.293452 [info ] [MainThread]:   database: e-datacap
+[0m14:30:59.294615 [info ] [MainThread]:   execution_project: e-datacap
+[0m14:30:59.296631 [info ] [MainThread]:   schema: ds_etl
+[0m14:30:59.298618 [info ] [MainThread]:   location: US
+[0m14:30:59.299628 [info ] [MainThread]:   priority: interactive
+[0m14:30:59.301618 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m14:30:59.302616 [info ] [MainThread]:   impersonate_service_account: None
+[0m14:30:59.305617 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m14:30:59.307640 [info ] [MainThread]:   job_retries: 1
+[0m14:30:59.309618 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m14:30:59.310617 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m14:30:59.313617 [info ] [MainThread]:   timeout_seconds: 300
+[0m14:30:59.315629 [info ] [MainThread]:   client_id: None
+[0m14:30:59.318617 [info ] [MainThread]:   token_uri: None
+[0m14:30:59.320626 [info ] [MainThread]:   dataproc_region: None
+[0m14:30:59.321620 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m14:30:59.323618 [info ] [MainThread]:   gcs_bucket: None
+[0m14:30:59.324833 [info ] [MainThread]:   dataproc_batch: None
+[0m14:30:59.326837 [info ] [MainThread]: Registered adapter: bigquery=1.8.3
+[0m14:31:00.152420 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m14:31:00.155419 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m14:31:03.152457 [debug] [MainThread]: On debug: select 1 as id
+[0m14:31:06.856845 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:US:29e25cf7-70cb-42d2-a517-b3a0d9d78de2&page=queryresults
+[0m14:31:22.584782 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m14:31:22.586302 [info ] [MainThread]: [32mAll checks passed![0m
+[0m14:31:22.589319 [debug] [MainThread]: Command `dbt debug` succeeded at 14:31:22.588330 after 26.13 seconds
+[0m14:31:22.589319 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m14:31:22.590319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022203768CB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000222054E0950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000222055EA330>]}
+[0m14:31:22.591314 [debug] [MainThread]: Flushing usage events
+[0m14:31:28.760649 [debug] [MainThread]: Error sending anonymous usage statistics. Disabling tracking for this execution. If you wish to permanently disable tracking, see: https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats.
+[0m14:31:37.809171 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465AEE3F50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465C9B0980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465C9B3B90>]}
+
+
+============================== 14:31:37.819175 | f6abe81e-be56-43a1-b38c-bb5cfab5f83c ==============================
+[0m14:31:37.819175 [info ] [MainThread]: Running with dbt=1.8.9
+[0m14:31:37.821174 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'D:\\workspace\\test_meilleurtaux\\technical_test\\dbt\\logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:31:39.925788 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024667DB5B50>]}
+[0m14:31:40.015321 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465B442120>]}
+[0m14:31:40.016330 [info ] [MainThread]: Registered adapter: bigquery=1.8.3
+[0m14:31:40.481121 [debug] [MainThread]: checksum: 132857a23e9d07220246854f7763165174ce9b737cfc7867629ace4294e520b1, vars: {}, profile: , target: , version: 1.8.9
+[0m14:31:40.606171 [info ] [MainThread]: Unable to do partial parsing because a project config has changed
+[0m14:31:40.607178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465D0E9580>]}
+[0m14:31:43.993049 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246683249B0>]}
+[0m14:31:44.149264 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024668545100>]}
+[0m14:31:44.150262 [info ] [MainThread]: Found 5 models, 4 data tests, 3 sources, 484 macros
+[0m14:31:44.151262 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246685BF020>]}
+[0m14:31:44.154301 [info ] [MainThread]: 
+[0m14:31:44.155416 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m14:31:44.160418 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap'
+[0m14:31:44.161446 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:46.498067 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_e-datacap_ds_etl'
+[0m14:31:46.499064 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:46.793753 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465B4AA030>]}
+[0m14:31:46.794952 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m14:31:46.795953 [info ] [MainThread]: 
+[0m14:31:46.802962 [debug] [Thread-1 (]: Began running node model.dbt_transform.banques_cleaned
+[0m14:31:46.803962 [info ] [Thread-1 (]: 1 of 5 START sql table model ds_etl.banques_cleaned ............................ [RUN]
+[0m14:31:46.806133 [debug] [Thread-1 (]: Acquiring new bigquery connection 'model.dbt_transform.banques_cleaned'
+[0m14:31:46.807144 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.banques_cleaned
+[0m14:31:46.838216 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.banques_cleaned"
+[0m14:31:46.840216 [debug] [Thread-1 (]: Began executing node model.dbt_transform.banques_cleaned
+[0m14:31:46.928745 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.banques_cleaned"
+[0m14:31:46.929753 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m14:31:46.931749 [debug] [Thread-1 (]: On model.dbt_transform.banques_cleaned: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.banques_cleaned"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`banques_cleaned`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      
+
+SELECT DISTINCT
+    Id,
+    TRIM(UPPER(Name)) as name_standardized,
+    TIMESTAMP(CreatedDate) as created_date_cleaned
+FROM `e-datacap`.ds_etl.banques_test
+    );
+  
+[0m14:31:47.415434 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:cca513aa-49d5-4d63-b0d4-ebe3e0d03034&page=queryresults
+[0m14:32:03.378735 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024668015070>]}
+[0m14:32:03.379739 [info ] [Thread-1 (]: 1 of 5 OK created sql table model ds_etl.banques_cleaned ....................... [[32mCREATE TABLE (2.9k rows, 204.6 KiB processed)[0m in 16.57s]
+[0m14:32:03.380746 [debug] [Thread-1 (]: Finished running node model.dbt_transform.banques_cleaned
+[0m14:32:03.381737 [debug] [Thread-1 (]: Began running node model.dbt_transform.my_first_dbt_model
+[0m14:32:03.382732 [info ] [Thread-1 (]: 2 of 5 START sql table model ds_etl.my_first_dbt_model ......................... [RUN]
+[0m14:32:03.383731 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbt_transform.banques_cleaned, now model.dbt_transform.my_first_dbt_model)
+[0m14:32:03.384887 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.my_first_dbt_model
+[0m14:32:03.388895 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.my_first_dbt_model"
+[0m14:32:03.389891 [debug] [Thread-1 (]: Began executing node model.dbt_transform.my_first_dbt_model
+[0m14:32:03.397088 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.my_first_dbt_model"
+[0m14:32:03.399047 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:32:03.400066 [debug] [Thread-1 (]: On model.dbt_transform.my_first_dbt_model: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.my_first_dbt_model"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`my_first_dbt_model`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      /*
+    Welcome to your first dbt model!
+    Did you know that you can also configure models directly within SQL files?
+    This will override configurations stated in dbt_project.yml
+
+    Try changing "table" to "view" below
+*/
+
+
+
+with source_data as (
+
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from source_data
+
+/*
+    Uncomment the line below to remove records with null `id` values
+*/
+
+where id is not null
+    );
+  
+[0m14:32:04.523236 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:5943826f-c43c-4ddb-8e94-0917fee8ff16&page=queryresults
+[0m14:32:58.240621 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246686B1A90>]}
+[0m14:32:58.242269 [info ] [Thread-1 (]: 2 of 5 OK created sql table model ds_etl.my_first_dbt_model .................... [[32mCREATE TABLE (1.0 rows, 0 processed)[0m in 54.86s]
+[0m14:32:58.245030 [debug] [Thread-1 (]: Finished running node model.dbt_transform.my_first_dbt_model
+[0m14:32:58.246109 [debug] [Thread-1 (]: Began running node model.dbt_transform.opportunity_cleaned
+[0m14:32:58.247730 [info ] [Thread-1 (]: 3 of 5 START sql table model ds_etl.opportunity_cleaned ........................ [RUN]
+[0m14:32:58.249721 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbt_transform.my_first_dbt_model, now model.dbt_transform.opportunity_cleaned)
+[0m14:32:58.250734 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.opportunity_cleaned
+[0m14:32:58.259758 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.opportunity_cleaned"
+[0m14:32:58.261124 [debug] [Thread-1 (]: Began executing node model.dbt_transform.opportunity_cleaned
+[0m14:32:58.269699 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.opportunity_cleaned"
+[0m14:32:58.274784 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:32:58.276185 [debug] [Thread-1 (]: On model.dbt_transform.opportunity_cleaned: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.opportunity_cleaned"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`opportunity_cleaned`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      
+
+WITH cleaned_opportunities AS (
+    SELECT *,
+        CASE 
+            WHEN TotRev__c > 0 
+            AND Age_emprunteur__c >= 18 
+            AND Age_emprunteur__c <= 80 
+            THEN TRUE 
+            ELSE FALSE 
+        END as is_exploitable,
+        TIMESTAMP(CreatedDate) as created_date_cleaned
+    FROM `e-datacap`.ds_etl.opportunity_test
+    WHERE TotRev__c > 0 
+    AND Age_emprunteur__c >= 18 
+    AND Age_emprunteur__c <= 80
+)
+SELECT 
+    Id,
+    Age_emprunteur__c,
+    TotRev__c,
+    BanquePrincipaleEmp__c,
+    created_date_cleaned,
+    is_exploitable,
+    StageName,
+    TxEndetApres__c,
+    TypBien__c,
+    TypProj__c,
+    UsagBien__c
+FROM cleaned_opportunities
+    );
+  
+[0m14:32:58.892680 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:e70322f3-f3dd-4e3d-aa2a-2b8e87dbbe8c&page=queryresults
+[0m14:33:02.884458 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024668715A30>]}
+[0m14:33:02.886910 [info ] [Thread-1 (]: 3 of 5 OK created sql table model ds_etl.opportunity_cleaned ................... [[32mCREATE TABLE (171.8k rows, 22.4 MiB processed)[0m in 4.63s]
+[0m14:33:02.891958 [debug] [Thread-1 (]: Finished running node model.dbt_transform.opportunity_cleaned
+[0m14:33:02.892958 [debug] [Thread-1 (]: Began running node model.dbt_transform.my_second_dbt_model
+[0m14:33:02.893966 [info ] [Thread-1 (]: 4 of 5 START sql table model ds_etl.my_second_dbt_model ........................ [RUN]
+[0m14:33:02.897212 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbt_transform.opportunity_cleaned, now model.dbt_transform.my_second_dbt_model)
+[0m14:33:02.900211 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.my_second_dbt_model
+[0m14:33:02.916483 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.my_second_dbt_model"
+[0m14:33:02.918481 [debug] [Thread-1 (]: Began executing node model.dbt_transform.my_second_dbt_model
+[0m14:33:02.923487 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.my_second_dbt_model"
+[0m14:33:02.924489 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:33:02.925740 [debug] [Thread-1 (]: On model.dbt_transform.my_second_dbt_model: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.my_second_dbt_model"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`my_second_dbt_model`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      -- Use the `ref` function to select from other models
+
+select *
+from `e-datacap`.`ds_etl`.`my_first_dbt_model`
+where id = 1
+    );
+  
+[0m14:33:03.391307 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:1a44d4e0-e071-4352-8ef6-8caa27e0d149&page=queryresults
+[0m14:33:05.815730 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246686ED430>]}
+[0m14:33:05.818999 [info ] [Thread-1 (]: 4 of 5 OK created sql table model ds_etl.my_second_dbt_model ................... [[32mCREATE TABLE (1.0 rows, 8.0 Bytes processed)[0m in 2.92s]
+[0m14:33:05.822187 [debug] [Thread-1 (]: Finished running node model.dbt_transform.my_second_dbt_model
+[0m14:33:05.823183 [debug] [Thread-1 (]: Began running node model.dbt_transform.propositions_cleaned
+[0m14:33:05.824183 [info ] [Thread-1 (]: 5 of 5 START sql table model ds_etl.propositions_cleaned ....................... [RUN]
+[0m14:33:05.826473 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbt_transform.my_second_dbt_model, now model.dbt_transform.propositions_cleaned)
+[0m14:33:05.827468 [debug] [Thread-1 (]: Began compiling node model.dbt_transform.propositions_cleaned
+[0m14:33:05.835468 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_transform.propositions_cleaned"
+[0m14:33:05.837466 [debug] [Thread-1 (]: Began executing node model.dbt_transform.propositions_cleaned
+[0m14:33:05.843504 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_transform.propositions_cleaned"
+[0m14:33:05.844563 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:33:05.846464 [debug] [Thread-1 (]: On model.dbt_transform.propositions_cleaned: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "dbt_transform", "target_name": "dev", "node_id": "model.dbt_transform.propositions_cleaned"} */
+
+  
+    
+
+    create or replace table `e-datacap`.`ds_etl`.`propositions_cleaned`
+      
+    
+    
+
+    OPTIONS()
+    as (
+      
+
+WITH cleaned_propositions AS (
+    SELECT *,
+        (CAST(TXHA__c AS FLOAT64) / 100) * DureePret_Mois__c as total_cost
+    FROM `e-datacap`.ds_etl.propositions_test
+    WHERE Etape_Source__c NOT LIKE '%Non éligible%'
+    AND Opportunity__c IN (
+        SELECT Id FROM `e-datacap`.`ds_etl`.`opportunity_cleaned`
+    )
+)
+SELECT 
+    Id,
+    Opportunity__c,
+    DureePret_Mois__c,
+    TXHA__c,
+    total_cost,
+    Etape_Source__c,
+    TIMESTAMP(CreatedDate) as created_date_cleaned
+FROM cleaned_propositions
+    );
+  
+[0m14:33:06.296577 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=e-datacap&j=bq:us-central1:efda8844-e799-4395-b9d4-dbcc8840540d&page=queryresults
+[0m14:33:09.330814 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f6abe81e-be56-43a1-b38c-bb5cfab5f83c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246686FDCA0>]}
+[0m14:33:09.332810 [info ] [Thread-1 (]: 5 of 5 OK created sql table model ds_etl.propositions_cleaned .................. [[32mCREATE TABLE (3.0k rows, 12.8 MiB processed)[0m in 3.50s]
+[0m14:33:09.334811 [debug] [Thread-1 (]: Finished running node model.dbt_transform.propositions_cleaned
+[0m14:33:09.337812 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:33:09.337812 [debug] [MainThread]: Connection 'list_e-datacap' was properly closed.
+[0m14:33:09.338813 [debug] [MainThread]: Connection 'list_e-datacap_ds_etl' was properly closed.
+[0m14:33:09.339815 [debug] [MainThread]: Connection 'model.dbt_transform.propositions_cleaned' was properly closed.
+[0m14:33:09.341448 [info ] [MainThread]: 
+[0m14:33:09.342464 [info ] [MainThread]: Finished running 5 table models in 0 hours 1 minutes and 25.19 seconds (85.19s).
+[0m14:33:09.350487 [debug] [MainThread]: Command end result
+[0m14:33:09.442971 [info ] [MainThread]: 
+[0m14:33:09.444965 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:33:09.445960 [info ] [MainThread]: 
+[0m14:33:09.447962 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m14:33:09.450966 [debug] [MainThread]: Command `dbt run` succeeded at 14:33:09.450966 after 91.94 seconds
+[0m14:33:09.451958 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465D0EAF00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246681FC260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002465D88D3D0>]}
+[0m14:33:09.452965 [debug] [MainThread]: Flushing usage events

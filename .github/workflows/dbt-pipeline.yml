@@ -17,12 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Configuration de l'authentification Google Cloud
       - uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
-          export_environment_variables: true
-          create_credentials_file: true
       
       - uses: google-github-actions/setup-gcloud@v1
         with:
@@ -31,39 +30,38 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-          cache: 'pip'
 
-      - name: Install DBT
+      # Installation et initialisation de dbt
+      - name: Initialize DBT Environment
         run: |
           cd dbt
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip install dbt-core dbt-bigquery
-          pip install -r requirements.txt
+          pip install dbt-core==1.8.9 dbt-bigquery==1.8.3  # Versions exactes de votre environnement local
+          
+          # Création du répertoire de macros s'il n'existe pas
+          mkdir -p macros
+          
+          # Installation des dépendances dbt
           dbt deps --profiles-dir .
 
-      - name: Verify Dependencies
-        run: |
-          cd dbt
-          source venv/bin/activate
-          python -c "import dbt_bigquery; print('DBT BigQuery adapter version:', dbt_bigquery.__version__)"
-
+      # Vérification de la configuration
       - name: Run DBT Debug
         run: |
           cd dbt
           source venv/bin/activate
           dbt debug --profiles-dir .
 
+      # Exécution des modèles
       - name: Run DBT Models
         run: |
           cd dbt
           source venv/bin/activate
-          dbt deps --profiles-dir .
           dbt run --profiles-dir .
 
+      # Tests
       - name: Run DBT Tests
-        if: success()
         run: |
           cd dbt
           source venv/bin/activate
