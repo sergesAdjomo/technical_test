@@ -30,39 +30,23 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Installation complète de dbt avec initialisation du projet
-      - name: Setup DBT Environment
+      - name: Setup DBT Project
         run: |
           cd dbt
           # Créer et activer l'environnement virtuel
           python -m venv venv
           source venv/bin/activate
           
-          # Installer les dépendances dans un ordre spécifique
+          # Installation des dépendances dans l'ordre correct
           pip install --upgrade pip wheel setuptools
           pip install dbt-core==1.8.9
           pip install dbt-bigquery==1.8.3
           
-          # Créer une structure de projet temporaire pour obtenir les macros nécessaires
-          cd ..
-          dbt init temp_project --adapter bigquery
+          # Vérifier que les packages sont installés
+          pip freeze
           
-          # Copier les macros essentielles
-          cp -r temp_project/dbt_packages/* dbt/
-          rm -rf temp_project
-          
-          cd dbt
-          # Installation des dépendances du projet
+          # Installer les dépendances dbt
           dbt deps --profiles-dir .
-
-      # Vérifier l'installation
-      - name: Verify DBT Installation
-        run: |
-          cd dbt
-          source venv/bin/activate
-          python -c "import dbt_bigquery; print(f'DBT BigQuery version: {dbt_bigquery.__version__}')"
-          ls -la
-          ls -la macros/
 
       - name: Run DBT Debug
         run: |
@@ -71,7 +55,6 @@ jobs:
           dbt debug --profiles-dir .
 
       - name: Run DBT Models
-        if: success()
         run: |
           cd dbt
           source venv/bin/activate
