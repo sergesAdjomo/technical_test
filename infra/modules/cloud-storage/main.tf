@@ -6,7 +6,14 @@ resource "google_storage_bucket" "etl_bucket" {
   storage_class = "STANDARD"      # Classe de stockage du bucket
   force_destroy = true            # Permet de détruire le bucket même s'il contient des objets
 
-  # lifecycle {
   #   prevent_destroy = true   # Prevent Terraform from destroying the bucket
-  # }
+  # ne plus creer si le bucket existe déjà
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  depends_on = [
+    google_storage_bucket.etl_bucket
+  ]
+
 }

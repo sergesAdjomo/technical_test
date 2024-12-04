@@ -2,3 +2,10 @@
 logs/
 # ignore cache
 cache/
+# ignore folder data_sources
+data_sources/gold
+data_sources/raw
+# remove environment file
+.env
+env/
+
