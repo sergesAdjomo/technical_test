@@ -11,6 +11,7 @@ env:
   PROJECT_ID: e-datacap
   REGION: us-central1
   SERVICE_ACCOUNT: terraform-sa@e-datacap.iam.gserviceaccount.com
+  TF_STATE_BUCKET: edata-terraform-tfstate-files
 
 jobs:
   terraform:
@@ -20,38 +21,100 @@ jobs:
         working-directory: ./infra
     
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Important pour avoir l'historique Git complet
       
-      - uses: google-github-actions/auth@v1
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
           
-      - uses: google-github-actions/setup-gcloud@v1
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ env.PROJECT_ID }}
       
+      - name: Verify GCP Authentication and Permissions
+        run: |
+          echo "Verifying GCP Authentication..."
+          gcloud auth list
+          echo "Checking project IAM permissions..."
+          gcloud projects get-iam-policy ${{ env.PROJECT_ID }}
+          
+      - name: Verify and Create GCS Bucket if Needed
+        run: |
+          echo "Checking if Terraform state bucket exists..."
+          if ! gsutil ls -b gs://${{ env.TF_STATE_BUCKET }} > /dev/null 2>&1; then
+            echo "Creating Terraform state bucket..."
+            gsutil mb -p ${{ env.PROJECT_ID }} -l ${{ env.REGION }} gs://${{ env.TF_STATE_BUCKET }}
+            gsutil versioning set on gs://${{ env.TF_STATE_BUCKET }}
+          else
+            echo "Terraform state bucket already exists"
+          fi
+      
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.6.6"  # Spécifie la version que utilisée
       
       - name: Terraform Init
         run: |
           terraform init \
-            -backend-config="bucket=edata-terraform-tfstate-files" \
+            -backend-config="bucket=${{ env.TF_STATE_BUCKET }}" \
             -backend-config="prefix=terraform/tfstate"
 
-      - name: Terraform Format
+      - name: Terraform Format and Style Check
         run: |
+          echo "Formatting Terraform files..."
           terraform fmt -recursive
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          
+          echo "Configuring Git..."
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          echo "Committing format changes if any..."
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -m "style: auto-format terraform files"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "style: auto-format terraform files" && git push)
+
+      - name: Terraform Validate
+        run: |
+          echo "Validating Terraform configuration..."
+          terraform validate
       
       - name: Terraform Plan
-        run: terraform plan -var="project_id=${{ env.PROJECT_ID }}" -var="region=${{ env.REGION }}"
+        id: plan
+        run: |
+          terraform plan \
+            -var="project_id=${{ env.PROJECT_ID }}" \
+            -var="region=${{ env.REGION }}" \
+            -no-color \
+            -out=tfplan
+        continue-on-error: true
+      
+      - name: Check Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: |
+          echo "Terraform Plan Failed!"
+          exit 1
         
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve -var="project_id=${{ env.PROJECT_ID }}" -var="region=${{ env.REGION }}"
+        if: github.ref == 'refs/heads/main' && steps.plan.outcome == 'success'
+        run: |
+          echo "Applying Terraform changes..."
+          terraform apply -auto-approve tfplan
+          
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "Pipeline failed! Check the logs for more details."
+          # Vous pouvez ajouter ici une intégration avec Slack, Teams ou email
+
+      - name: Clean up
+        if: always()
+        run: |
+          echo "Cleaning up temporary files..."
+          rm -f tfplan || true
+          rm -rf .terraform || true
