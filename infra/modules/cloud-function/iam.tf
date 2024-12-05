@@ -51,9 +51,9 @@ resource "google_project_iam_member" "storage_admin_sa" {
   role    = "roles/storage.admin"
   member  = "serviceAccount:${var.service_account_email}"
 }
-resource "google_service_account_iam_member" "function_service_account_user" {
+# Dans modules/cloud-function/iam.tf
+resource "google_service_account_iam_member" "terraform_sa_user" {
   service_account_id = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
   role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:${var.service_account_email}"
-  depends_on         = [google_project_iam_member.artifactregistry_reader]
+  member             = "serviceAccount:terraform-sa@e-datacap.iam.gserviceaccount.com"
 }

@@ -72,5 +72,20 @@ jobs:
             -out=tfplan
         
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve tfplan
+        if: github.ref == 'refs/heads/main' && steps.plan.outcome == 'success'
+        run: |
+          echo "Applying Terraform changes..."
+          terraform apply -auto-approve tfplan
+          
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "Pipeline failed! Check the logs for more details."
+          # Vous pouvez ajouter ici une intégration avec Slack, Teams ou email
+
+      - name: Clean up
+        if: always()
+        run: |
+          echo "Cleaning up temporary files..."
+          rm -f tfplan || true
+          rm -rf .terraform || true
