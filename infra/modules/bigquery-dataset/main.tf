@@ -5,6 +5,6 @@ resource "google_bigquery_dataset" "dataset" {
   location   = var.location   # Localisation du dataset
 
   lifecycle {
-    prevent_destroy = true  # Prevent Terraform from destroying the dataset
+    prevent_destroy = true # Prevent Terraform from destroying the dataset
   }
 }
