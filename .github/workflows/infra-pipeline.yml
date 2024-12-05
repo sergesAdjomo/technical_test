@@ -68,6 +68,7 @@ jobs:
           terraform plan \
             -var="project_id=${{ env.PROJECT_ID }}" \
             -var="region=${{ env.REGION }}" \
+            -var-file="env/dev.tfvars" \
             -out=tfplan
         
       - name: Terraform Apply
