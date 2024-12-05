@@ -51,7 +51,7 @@ resource "google_project_iam_member" "storage_admin_sa" {
   role    = "roles/storage.admin"
   member  = "serviceAccount:${var.service_account_email}"
 }
-# Dans modules/cloud-function/iam.tf
+# Ajout de la permission pour le service account terraform
 resource "google_service_account_iam_member" "terraform_sa_user" {
   service_account_id = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
   role               = "roles/iam.serviceAccountUser"
