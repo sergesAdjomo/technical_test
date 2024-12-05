@@ -109,9 +109,6 @@ jobs:
         run: |
           echo "Applying Terraform changes..."
           terraform apply \
-            -var="project_id=${{ env.PROJECT_ID }}" \
-            -var="region=${{ env.REGION }}" \
-            -var-file="env/dev.tfvars" \
             -auto-approve tfplan
           
       - name: Notify on Failure
