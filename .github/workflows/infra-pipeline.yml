@@ -63,7 +63,8 @@ jobs:
           (git commit -m "style: auto-format terraform files" && \
            git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }})
       
-      - name: Terraform Plan
+      - id: plan
+        name: Terraform Plan
         run: |
           terraform plan \
             -var="project_id=${{ env.PROJECT_ID }}" \
@@ -74,8 +75,11 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && steps.plan.outcome == 'success'
         run: |
-          echo "Applying Terraform changes..."
-          terraform apply -auto-approve tfplan
+          terraform apply \
+            -var="project_id=${{ env.PROJECT_ID }}" \
+            -var="region=${{ env.REGION }}" \
+            -var-file="env/dev.tfvars" \
+            -auto-approve tfplan
           
       - name: Notify on Failure
         if: failure()
