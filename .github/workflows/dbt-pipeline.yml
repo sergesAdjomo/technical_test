@@ -33,22 +33,12 @@ jobs:
       - name: Setup DBT Project
         run: |
           cd dbt
-          # Créer et activer l'environnement virtuel
           python -m venv venv
           source venv/bin/activate
-          
-          # Installation des dépendances dans l'ordre correct
-          pip install --upgrade pip wheel setuptools
-          pip install dbt-core==1.8.9
-          pip install dbt-bigquery==1.8.3
-          
-          # Vérifier que les packages sont installés
-          pip freeze
-          
-          # Installer les dépendances dbt
+          pip install dbt-core==1.8.9 dbt-bigquery==1.8.3
           dbt deps --profiles-dir .
 
-      - name: Run DBT Debug
+      - name: DBT Debug
         run: |
           cd dbt
           source venv/bin/activate
@@ -58,7 +48,7 @@ jobs:
         run: |
           cd dbt
           source venv/bin/activate
-          dbt run --profiles-dir .
+          dbt run --select cleaned.* --profiles-dir .
 
       - name: Run DBT Tests
         if: success()
