@@ -35,7 +35,16 @@ jobs:
           cd dbt
           python -m venv venv
           source venv/bin/activate
+          # Nettoyage du cache des packages
+          rm -rf ~/.dbt/packages || true
+          mkdir -p ~/.dbt/packages
+          # Installation des dépendances dans l'ordre
+          pip install --upgrade pip
+          pip install dbt-core==1.8.9
+          pip install dbt-bigquery==1.8.3
           pip install -r requirements.txt
+          # Installation des packages dbt
+          dbt clean --profiles-dir .
           dbt deps --profiles-dir .
 
       - name: DBT Debug
