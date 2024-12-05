@@ -35,17 +35,7 @@ jobs:
           cd dbt
           python -m venv venv
           source venv/bin/activate
-          # Installation dans l'ordre correct avec les dépendances
-          pip install --upgrade pip wheel setuptools
-          pip install dbt-core==1.8.9
-          pip install dbt-bigquery==1.8.3
-          pip install -e .
-          # Vérifier les packages installés
-          pip list
-          # Nettoyer le cache DBT si existant
-          rm -rf ~/.dbt/packages
-          # Installer les dépendances DBT
-          dbt clean --profiles-dir .
+          pip install -r requirements.txt
           dbt deps --profiles-dir .
 
       - name: DBT Debug
@@ -53,7 +43,6 @@ jobs:
           cd dbt
           source venv/bin/activate
           dbt debug --profiles-dir .
-          dbt --version
 
       - name: Run DBT Models
         run: |
